@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+    "basics": {},
+    "work": [],
+    "volunteer": [],
+    "education": [],
+    "awards": [],
+    "certificates": [],
+    "publications": [],
+    "skills": [],
+    "languages": [],
+    "interests": [],
+    "references": [],
+    "projects": [],
+    "meta": {}
+}
