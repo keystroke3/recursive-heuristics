@@ -2,6 +2,7 @@
 title: "Big-O Complexity Notation"
 date: 2023-07-13T15:02:25+03:00
 tags: ['dsa','explainer', 'algorithms', 'golang', 'big-o']
+toc: true
 ---
 Big O complexity notation is used to give a general idea of the performance of an algorithm in terms of resources such as time or memory as the input grows larger. It is not a measure of true performance and is only a guide. The differences between the various algorithms are only seen on really large inputs.  
 

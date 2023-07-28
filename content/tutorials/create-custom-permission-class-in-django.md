@@ -2,6 +2,7 @@
 title: "How to Create Custom Permission Class in Django"
 date: 2023-07-25T15:36:25+03:00
 tags: ['tutorial', 'python', 'django', 'permissions', 'security']
+toc: true
 # draft: true
 ---
 

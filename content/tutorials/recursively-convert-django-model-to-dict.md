@@ -2,7 +2,9 @@
 title: "How to Recursively Convert Django Model to Dict"
 date: 2023-07-25T16:15:35+03:00
 tags: ['python', 'django', 'tutorials', 'json']
+toc: true
 ---
+
 In this article we will look at how to create your own recursive serializer in Django without using the Django Rest Framework
 Sometimes when working with Django, we may have some data that we want to  serialize (convert to JSON) but we do not have the option of
 using the serializers that come with Django Rest Framework. The data can also take the same form for many cases and writing a new serializer

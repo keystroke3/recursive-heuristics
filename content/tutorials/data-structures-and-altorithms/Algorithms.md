@@ -3,6 +3,7 @@ title: "Algorithms"
 date: 2023-07-21T12:50:21+03:00
 tags: ['dsa','explainer', 'algorithms', 'golang']
 math: true
+toc: true
 ---
 
 ## SEARCH ALGORITHMS
