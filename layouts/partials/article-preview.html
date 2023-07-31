@@ -1,0 +1,17 @@
+<article class="post-preview">
+    <h3 class="post-preview-header">
+      <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+    </h3>
+  <div class="post-preview-content">
+    {{ with .Description }}
+    {{ . }}
+  {{ else }}
+    {{ .Summary }}
+    {{ if .Truncated }}
+      <div class="post-content__read-more">
+        <a href="{{ .RelPermalink }}">Read more &gt;</a>
+      </div>
+    {{ end }}
+  {{ end }}
+  </div>
+</article>

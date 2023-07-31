@@ -1,9 +1,10 @@
 ---
 title: "How to Create Custom Permission Class in Django"
+# draft: true
 date: 2023-07-25T15:36:25+03:00
 tags: ['tutorial', 'python', 'django', 'permissions', 'security']
+category: "tutorial"
 toc: true
-# draft: true
 ---
 
 Permissions can be a hustle to deal with when developing an api. Suppose we have a number of api views and endpoints where the access permissions are very similar to one another with only slight variations..  

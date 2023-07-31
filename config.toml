@@ -9,6 +9,7 @@ theme = 'hugo-theme-gruvbox'
     _merge = "deep"
 
 [params]
+    enableTagCloud = true
     author = "Teddy Okello"
     description = "A collection of tutorials, notes and my thoughts on various topics"
     [params.logo]

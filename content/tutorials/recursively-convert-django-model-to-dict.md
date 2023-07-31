@@ -1,7 +1,8 @@
 ---
 title: "How to Recursively Convert Django Model to Dict"
 date: 2023-07-25T16:15:35+03:00
-tags: ['python', 'django', 'tutorials', 'json']
+tags: ['python', 'django', 'tutorial', 'json']
+category: "tutorial"
 toc: true
 ---
 

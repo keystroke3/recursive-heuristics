@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-theme="light"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/roboto-slab-latin-700.woff2"
+  crossorigin="anonymous"
+/>
+
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-300.woff2"
+  crossorigin="anonymous"
+/>
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-400.woff2"
+  crossorigin="anonymous"
+/>
+
+<link
+  rel="preload"
+  as="font"
+  type="font/woff2"
+  href="/fonts/fira-code-latin-700.woff2"
+  crossorigin="anonymous"
+/>
+
+  
+  
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+  
+
+
+
+
+<title>Data Structures</title>
+
+<meta
+  name="description"
+  content="A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
+Static Array# Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory."
+/>
+
+<link rel="canonical" href="https://blog.okello.io/tutorials/data-structures-and-altorithms/data-structures/" />
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Structures"/>
+<meta name="twitter:description" content="A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
+Static Array# Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory."/>
+
+<meta property="og:title" content="Data Structures" />
+<meta property="og:description" content="A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
+Static Array# Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.okello.io/tutorials/data-structures-and-altorithms/data-structures/" /><meta property="article:section" content="tutorials" />
+<meta property="article:published_time" content="2023-07-21T12:23:00+03:00" />
+<meta property="article:modified_time" content="2023-07-21T12:23:00+03:00" />
+
+<meta itemprop="name" content="Data Structures">
+<meta itemprop="description" content="A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
+Static Array# Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory."><meta itemprop="datePublished" content="2023-07-21T12:23:00+03:00" />
+<meta itemprop="dateModified" content="2023-07-21T12:23:00+03:00" />
+<meta itemprop="wordCount" content="1542">
+<meta itemprop="keywords" content="dsa,explainer,algorithms,golang,big-o," />
+
+
+
+
+
+
+
+
+  
+  
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+
+<style>
+   
+  @font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:100;src:local("Roboto Slab Thin "),local("Roboto Slab-Thin"),url(/fonts/roboto-slab-latin-100.woff2) format("woff2"),url(/fonts/roboto-slab-latin-100.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:200;src:local("Roboto Slab Extra Light "),local("Roboto Slab-Extra Light"),url(/fonts/roboto-slab-latin-200.woff2) format("woff2"),url(/fonts/roboto-slab-latin-200.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:300;src:local("Roboto Slab Light "),local("Roboto Slab-Light"),url(/fonts/roboto-slab-latin-300.woff2) format("woff2"),url(/fonts/roboto-slab-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:400;src:local("Roboto Slab Regular "),local("Roboto Slab-Regular"),url(/fonts/roboto-slab-latin-400.woff2) format("woff2"),url(/fonts/roboto-slab-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:500;src:local("Roboto Slab Medium "),local("Roboto Slab-Medium"),url(/fonts/roboto-slab-latin-500.woff2) format("woff2"),url(/fonts/roboto-slab-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:600;src:local("Roboto Slab SemiBold "),local("Roboto Slab-SemiBold"),url(/fonts/roboto-slab-latin-600.woff2) format("woff2"),url(/fonts/roboto-slab-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:700;src:local("Roboto Slab Bold "),local("Roboto Slab-Bold"),url(/fonts/roboto-slab-latin-700.woff2) format("woff2"),url(/fonts/roboto-slab-latin-700.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:800;src:local("Roboto Slab ExtraBold "),local("Roboto Slab-ExtraBold"),url(/fonts/roboto-slab-latin-800.woff2) format("woff2"),url(/fonts/roboto-slab-latin-800.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto Slab;font-style:normal;font-weight:900;src:local("Roboto Slab Black "),local("Roboto Slab-Black"),url(/fonts/roboto-slab-latin-900.woff2) format("woff2"),url(/fonts/roboto-slab-latin-900.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:300;src:local("Fira Code Light "),local("Fira Code-Light"),url(/fonts/fira-code-latin-300.woff2) format("woff2"),url(/fonts/fira-code-latin-300.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:400;src:local("Fira Code Regular "),local("Fira Code-Regular"),url(/fonts/fira-code-latin-400.woff2) format("woff2"),url(/fonts/fira-code-latin-400.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:500;src:local("Fira Code Medium "),local("Fira Code-Medium"),url(/fonts/fira-code-latin-500.woff2) format("woff2"),url(/fonts/fira-code-latin-500.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:600;src:local("Fira Code SemiBold "),local("Fira Code-SemiBold"),url(/fonts/fira-code-latin-600.woff2) format("woff2"),url(/fonts/fira-code-latin-600.woff) format("woff")}@font-face{font-display:swap;font-family:Fira Code;font-style:normal;font-weight:700;src:local("Fira Code Bold "),local("Fira Code-Bold"),url(/fonts/fira-code-latin-700.woff2) format("woff2"),url(/fonts/fira-code-latin-700.woff) format("woff")}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{-webkit-text-size-adjust:100%;line-height:1.15}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}
+
+/*! CC BY-SA 3.0 License | https://stackoverflow.com/a/36118384/1154965 */@keyframes blink{50%{opacity:0}to{opacity:1}}
+
+/*! MIT License | github.com/schnerring/hugo-theme-gruvbox */:root[data-theme=light]{--bg:var(--bg0);--bg0:#fbf1c7;--bg0_h:#f9f5d7;--bg0_s:#f2e5bc;--bg1:#ebdbb2;--bg2:#d5c4a1;--bg3:#bdae93;--bg4:#a89984;--fg:var(--fg1);--fg0:#282828;--fg1:#3c3836;--fg2:#504945;--fg3:#665c54;--fg4:#7c6f64;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#9d0006;--green1:#98971a;--green2:#797403;--yellow1:#d79921;--yellow2:#b57614;--blue1:#458588;--blue2:#076678;--purple1:#b16286;--purple2:#8f3f71;--aqua1:#689d6a;--aqua2:#427b58;--orange1:#d65d0e;--orange2:#af3a03}[data-theme=light]:root .light--hidden{display:none}:root[data-theme=dark]{--bg:var(--bg0);--bg0:#282828;--bg0_h:#1d2021;--bg0_s:#32302f;--bg1:#3c3836;--bg2:#504945;--bg3:#665c54;--bg4:#7c6f64;--fg:var(--fg1);--fg0:#fbf1c7;--fg1:#ebdbb2;--fg2:#d5c4a1;--fg3:#bdae93;--fg4:#a89984;--gray1:var(--fg4);--gray2:#928374;--red1:#cc241d;--red2:#fb4934;--green1:#98971a;--green2:#b8bb26;--yellow1:#d79921;--yellow2:#fabd2f;--blue1:#458588;--blue2:#83a598;--purple1:#b16286;--purple2:#d3869b;--aqua1:#689d6a;--aqua2:#8ec07c;--orange1:#d65d0e;--orange2:#fe8019}[data-theme=dark]:root .dark--hidden{display:none}:root{--primary:var(--blue1);--primary-alt:var(--blue2);--font-monospace:"Fira Code","Lucida Console",Monaco,monospace;--font-sans-serif:Verdana,Helvetica,sans-serif;--font-serif:"Roboto Slab",Georgia,serif}html{font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:1rem;scroll-behavior:smooth}body{word-wrap:break-word;background:var(--bg);color:var(--fg);line-height:1.675}strong{letter-spacing:.35px}a{color:inherit;-webkit-text-decoration:none;text-decoration:none}a.link--external:after{content:"\2009↗"}img{border:2px solid var(--bg1);height:auto;max-width:100%}figure{display:inline-block}figcaption{color:var(--fg3);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);font-size:.9rem}::-moz-selection{background:var(--bg4);color:var(--fg0)}::selection{background:var(--bg4);color:var(--fg0)}h1,h2,h3,h4{color:var(--fg0);font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-weight:300;line-height:1.4}h1 code,h2 code,h3 code,h4 code{font-size:1em}h2,h3,h4{border-bottom:1px solid var(--bg1)}h1,h2{font-weight:400}h1{font-size:1.875rem}h2{font-size:1.75rem}h3{font-size:1.625rem}@media (min-width:768px){h1{font-size:2.375rem}h2{font-size:2rem}h3{font-size:1.75rem}}h4{font-size:1.5rem}hr{background:var(--bg1);border:none;height:1px;margin:3rem auto;width:80%}code,pre{border-radius:.2rem;padding:0 .2em}pre code{padding:0}code,pre{background:var(--bg1)}code,pre{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}code code{background:var(--bg2)}pre{padding:1rem}pre{background:var(--bg1)!important;overflow:auto}pre code{background:none}pre::-webkit-scrollbar{height:.5rem;scrollbar-width:auto}pre::-webkit-scrollbar-track{background:var(--bg2);border-radius:.2rem}pre::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:.2rem}.layout{display:grid;grid-template-areas:"header" "main" "footer";grid-template-rows:auto 1fr auto;height:100vh}main{align-items:start;display:grid;grid-area:main;grid-template-areas:"empty content sidebar";grid-template-columns:1fr minmax(0,650px) 4fr}header{background:var(--bg1);grid-area:header}footer{grid-area:footer}footer,main{margin:.5em 1.1em}.content{grid-area:content}.sidebar{display:none;flex-direction:column;grid-area:sidebar;margin-top:3rem;position:sticky;top:2rem}@media (min-width:992px){.sidebar{display:flex}}header{display:grid;font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);font-size:1.125rem;grid-template-areas:"heading search nav theme-toggle";grid-template-columns:auto auto 1fr auto;padding:.75rem}.logo{color:var(--fg0);display:flex;font-weight:700;grid-area:heading}.logo:hover .logo__cursor{animation:blink 1s infinite;opacity:1}.logo__chevron,.logo__cursor{margin-left:.5rem}.logo__cursor{opacity:0}.logo__text{display:none}@media (min-width:768px){.logo__text{display:block}}.search{display:flex;grid-area:search;margin:0 1rem}#search__text{background:var(--bg2);border:1px solid var(--bg2);border-radius:.2rem;caret-color:var(--fg);color:var(--fg);outline:none;padding:0 .5rem;width:100%}#search__text:hover{border-color:var(--bg3)}#search__text:focus{border-color:var(--bg4)}#search__text::-moz-placeholder{color:var(--fg3)}#search__text::placeholder{color:var(--fg3)}#search__text[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}#search__suggestions{background:var(--bg);border-radius:.2rem;box-shadow:0 .5rem 1rem var(--bg1);font-family:Roboto Slab,Georgia,serif;font-family:var(--font-serif);left:0;margin-top:2rem;position:absolute;width:95vw;z-index:1000}@media (min-width:768px){.search{position:relative}#search__suggestions{width:60vw}}.search__suggestions--hidden{display:none}.search__suggestion-item{border-bottom:1px dashed var(--bg2);display:grid;grid-template-columns:1fr 2fr}.search__suggestion-item:focus,.search__suggestion-item:focus-visible,.search__suggestion-item:hover{background:var(--bg1);cursor:pointer;outline:none}.search__suggestion-item:last-child{border:none}.search__suggestion-description,.search__suggestion-title{margin:1rem 0;padding:0 1rem}.search__suggestion-title{font-weight:700}.search__suggestion-description{border-left:1px solid var(--bg2)}.search__no-results{padding:.75rem}.theme__toggle{align-items:center;background:none;border:none;color:var(--yellow1);cursor:pointer;display:flex;grid-area:theme-toggle;margin:0 1rem}.theme__toggle:hover{color:var(--yellow2)}.theme__toggle svg{height:28px;width:28px}nav#menu{align-items:center;display:flex;grid-area:nav;justify-content:flex-end}nav#menu .menu__item{color:var(--fg)}nav#menu .menu__item:hover{color:var(--fg3);cursor:pointer}nav#menu ul{list-style:none;margin:0;padding:0}nav#menu ul.menu--horizontal{align-items:center;display:none}nav#menu ul.menu--horizontal li{display:inline-block;margin:0 .75rem}@media (min-width:768px){nav#menu ul.menu--horizontal{display:flex}}nav#menu ul.menu--vertical{background:var(--fg0);bottom:0;margin:0;padding:3rem;position:fixed;right:0;top:0;transform:translate(100%);transition:transform .5s cubic-bezier(.9,0,.1,1);width:50%;z-index:10}nav#menu ul.menu--vertical .menu__item{color:var(--bg1)}nav#menu ul.menu--vertical .menu__item:hover{color:var(--bg4)}nav#menu .menu__burger{display:flex;height:24px;width:24px}nav#menu .menu__burger>*{position:absolute}nav#menu .menu__burger svg{height:inherit;width:inherit;z-index:20}nav#menu .menu__burger input{height:inherit;opacity:0;width:inherit;z-index:30}nav#menu .menu__burger input:checked~ul.menu--vertical{transform:none}nav#menu .menu__burger input:checked~svg{stroke:var(--bg1)}@media (min-width:768px){nav#menu .menu__burger{display:none}}.post-preview{margin-left:5%;max-width:90%}.post-preview-header{color:var(--blue1);font-size:1.4rem}.post-preview-content{font-size:.9rem;font-weight:300}.sidebar{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace);margin-left:auto;margin-right:auto;max-width:350px;padding-left:2.5rem}.sidebar svg{fill:var(--fg)}.sidebar__heading{font-size:1.3rem}aside.toc a{color:var(--blue2);color:var(--primary-alt)}aside.toc a:hover{color:var(--blue1);color:var(--primary)}aside.toc ul{list-style:none;margin:0;padding:0}aside.toc ul ul{font-size:.9rem;margin-left:.5rem}aside.toc ul li{line-height:1.1}aside.toc ul li a{display:block;padding:.2rem 0}.tag__active{background-color:var(--bg2);color:var(--fg);padding-left:.2rem;padding-right:.2rem}.content-section,.post{border-bottom:2px dotted var(--bg1);padding:2rem 0}.post figure,.post img:not(figure img){box-sizing:border-box;margin:.5rem 0}.post-content__read-more,.post-header{font-family:Fira Code,Lucida Console,Monaco,monospace;font-family:var(--font-monospace)}.post-content{margin:1.3rem 0}.post-content__read-more{margin-top:1.3rem}.post-content a,.post-content__read-more,.post-header a{color:var(--blue2);color:var(--primary-alt)}.post-content a:hover,.post-header a:hover{color:var(--blue1);color:var(--primary)}.post-tags{align-items:center;display:flex;flex-wrap:wrap;gap:.9rem;margin:1rem 0}.post-tag{font-size:.9rem;line-height:1}.post-tag:before{content:"#"}.post-heading__anchor{display:none}h1:hover .post-heading__anchor,h2:hover .post-heading__anchor,h3:hover .post-heading__anchor,h4:hover .post-heading__anchor{display:inline-block}
+   
+</style>
+
+<link
+  rel="preload"
+  href="/css/non-critical.a695b88a0957271618f786794127c4dc409c85101336d84e8b2c6e10556b20c68008fa60877756c974b9b57949bdc786fe767cfdaaa4af046414a977b5d5c2a3.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  
+    integrity="sha512-ppW4iglXJxYY94Z5QSfE3ECchRATNthOiyxuEFVrIMaACPpgh3dWyXS5tXlJvceG/nZ8/aqkrwRkFKl3tdXCow=="
+  
+/>
+
+
+<link
+  id="prism-dark"
+  rel="preload"
+  href="/prism-themes/prism-gruvbox-dark.min.54aecc64074623a4f9898544dcbdab9e804f1560ef0b38f4cf8e10fcaaf72264e798cb407c601aca6ecd833ec4eb93d66535581f18d45ba202cf848b70dbc332.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  integrity="sha512-VK7MZAdGI6T5iYVE3L2rnoBPFWDvCzj0z44Q/Kr3ImTnmMtAfGAaym7Ngz7E65PWZTVYHxjUW6ICz4SLcNvDMg=="
+  disabled
+/>
+
+
+<link
+  id="prism-light"
+  rel="preload"
+  href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+  
+    integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+  
+  
+/>
+
+<noscript>
+  
+    <link
+      rel="stylesheet"
+      href="/prism-themes/prism-gruvbox-light.min.42a221741efe997fcc94187c39d63c555560678789ac9ca856c74a5f0ddb2aa6c50d38b2ffbecc7a99038cbbd2efa99746e862267f781c559e0cfec10b88a5fc.css"
+      
+        integrity="sha512-QqIhdB7&#43;mX/MlBh8OdY8VVVgZ4eJrJyoVsdKXw3bKqbFDTiy/77MepkDjLvS76mXRuhiJn94HFWeDP7BC4il/A=="
+      
+    />
+  
+
+
+  <link
+    rel="stylesheet"
+    href="/css/non-critical.a695b88a0957271618f786794127c4dc409c85101336d84e8b2c6e10556b20c68008fa60877756c974b9b57949bdc786fe767cfdaaa4af046414a977b5d5c2a3.css"
+    
+      integrity="sha512-ppW4iglXJxYY94Z5QSfE3ECchRATNthOiyxuEFVrIMaACPpgh3dWyXS5tXlJvceG/nZ8/aqkrwRkFKl3tdXCow=="
+    
+  />
+</noscript>
+
+
+  
+
+  
+
+
+
+
+<script>
+  (()=>{function c(){if(localStorage&&localStorage.getItem("theme"))return localStorage.getItem("theme");if(window.matchMedia)return window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}function n(t){document.documentElement.setAttribute("data-theme",t);let e=document.getElementById("prism-dark"),i=document.getElementById("prism-light");e.toggleAttribute("disabled",t==="light"),i.toggleAttribute("disabled",t==="dark"),localStorage.setItem("theme",t)}var o=c();o&&n(o);function l(t){let e=t.currentTarget.classList.contains("light--hidden")?"light":"dark";n(e)}document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".theme__toggle").forEach(e=>{e.addEventListener("click",l)})});})();
+
+</script>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#282828" />
+<meta name="msapplication-TileColor" content="#282828" />
+<meta name="theme-color" content="#282828" />
+
+
+
+  
+  
+
+</head>
+
+  <body>
+    <div class="layout">
+      <header>
+  <a
+    class="logo"
+    href="/"
+  >
+    
+      <div class="logo__text">RH</div>
+    
+    <div class="logo__chevron">></div>
+    <div class="logo__cursor">█</div>
+  </a>
+
+  <div class="search">
+    <input
+      id="search__text"
+      type="search"
+      placeholder="Search..."
+      aria-label="Search"
+      autocomplete="off"
+    />
+    <div id="search__suggestions" class="search__suggestions--hidden"></div>
+  </div>
+
+  <nav id="menu">
+    <ul class="menu--horizontal">
+      
+        <li class="menu__item">
+          <a href="/tutorials/">How-To</a>
+        </li>
+      
+        <li class="menu__item">
+          <a href="https://okello.io">About</a>
+        </li>
+      
+    </ul>
+
+    <div class="menu__burger">
+      
+      <input class="menu__item" type="checkbox" aria-label="Open main menu" />
+
+      
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+
+
+
+
+
+
+      <ul class="menu--vertical">
+        
+          <li>
+            <a class="menu__item" href="/tutorials/">How-To</a>
+          </li>
+        
+          <li>
+            <a class="menu__item" href="https://okello.io">About</a>
+          </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+  <button class="theme__toggle light--hidden" aria-label="Toggle light mode">
+    
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+  <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+</svg>
+
+
+
+
+
+  </button>
+
+  <button class="theme__toggle dark--hidden" aria-label="Toggle dark mode">
+    
+<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+</svg>
+
+
+
+
+
+  </button>
+  
+</header>
+
+      <main>
+        <div class="content">
+          
+  <article class="post">
+    <div class="post-header">
+      <h1>Data Structures</h1>
+      <div class="post-meta"><span>2023-07-21</span>
+    <div class="post-tags">
+      <a class="post-tag" href="https://blog.okello.io/tags/dsa">dsa</a><a class="post-tag" href="https://blog.okello.io/tags/explainer">explainer</a><a class="post-tag" href="https://blog.okello.io/tags/algorithms">algorithms</a><a class="post-tag" href="https://blog.okello.io/tags/golang">golang</a><a class="post-tag" href="https://blog.okello.io/tags/big-o">big&#8209;o</a>
+    </div>
+  
+
+  
+</div>
+
+    </div>
+
+    <div class="post-content">
+      <p>A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.</p>
+<h3 id="static-array">Static Array<a href="#static-array" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory.</p>
+<h4 id="search">Search<a href="#search" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>If the index of the target element is already known, then retrieving that item is a constant time operation, i.e. $O(1)$
+However, if the index of the element is unknown, then we would have to walk the entire array, up until the index of the target
+element. Fetching from array therefor has $O(n)$ time complexity.</p>
+<h4 id="insertion">Insertion<a href="#insertion" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>To insert into an array, the value at the address is overwritten and the array size remains constant. Inserting into the middle of an array
+while maintaining data integrity, i.e. not overwriting, involves shifting all elements on position to the right, and inserting the
+element at the new blank spot. This means for a worst case non-overwriting insertion, we would have to shift $N$ elements for an array of length $N+1$
+in order to insert at the beginning of the array. So the time complexity for this type of insertion is $O(n)$</p>
+<h4 id="deletion">Deletion<a href="#deletion" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>Deletion sets the value at the address to an agreed upon value meaning &ldquo;Null&rdquo;, i.e. zero <code>0</code>. An array&rsquo;s length cannot be decreased. If we want to ensure
+the indices of elements match what is expected after a deletion, all elements to the right of the deletion have to be shifted one position to the left.
+This is an $(n)$ in the worst case scenario.</p>
+<h4 id="use-case">Use Case<a href="#use-case" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>Arrays are basic data structures and can therefor be used in almost any situation, but they are mostly preferred where
+the items to be stored are few and is easy to know the index of the item you are looking for during an operation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// static array in go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">items</span> = [<span style="color:#ae81ff">5</span>]<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>}
+</span></span></code></pre></div><h3 id="dynamic-array">Dynamic Array<a href="#dynamic-array" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>A dynamic array is a type of array that appears to grow with the number of elements. They do not have a fixed length like a static array.</p>
+<h4 id="search-1">Search<a href="#search-1" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>A dynamic array is just a static array under the hood, so all search operations are the same as a static array.</p>
+<h4 id="insertion-1">Insertion<a href="#insertion-1" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>When a dynamic array is instantiated, it is created with slightly more space than is required. So if we create a dynamic array and store 4 elements in it, the underlying array can have 7 memory spaces instead of 4. This way if you were to <code>append</code> or <code>push</code> to the array, it will happen in constant time, because there is still space for 3 more elements in the array.<br>
+If we were to add 4 more elements, to the array, a new array with even more space, say 10, is created and all the previous elements are copied to the new array and the new elements are added to the new array instead. The process of copying over the elements can be assumed to be a constant time operation, and therefor ignored when estimating complexity. Therefor the insert operation with growing array is considered constant time complexity.
+To insert in between elements, the shifting of all necessary elements has to happen, so the time complexity is $O(n)$</p>
+<h4 id="deletion-1">Deletion<a href="#deletion-1" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>To delete elements, <code>pop</code> operations are constant time and shift operations are linear time. Dynamic arrays seldom shrink, so the memory allocation remains the same after a deletion.</p>
+<h4 id="use-case-1">Use case<a href="#use-case-1" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>Dynamic arrays are the primary form of arrays used in many programming languages under the hood. Static arrays are useful when you know size of the data and all you are sure it will not grow. They provide better memory efficiency. Dynamic arrays are better for when the size of the data is unknown at time of creation. They take up more memory for the same number of elements, but they provide flexibility with size.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// dynamic array (slice) in go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">items</span> = []<span style="color:#66d9ef">int</span>{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>}
+</span></span></code></pre></div><h3 id="linked-lists">Linked Lists<a href="#linked-lists" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Link lists are a type of <em>node</em> based data structure. A linked list is a collection of nodes that each contain a value, and a reference to another node.</p>
+<p>
+
+
+
+  
+  
+  <img
+    src="/linked_list_example.png"
+    alt="linked list example"
+    
+    loading="lazy"
+    width="3040"
+    height="601"
+  />
+
+
+
+
+
+
+</p>
+<p>When each node only has it&rsquo;s value and a reference to one other node, the list is considered a <strong>Singly Linked List</strong>. As there is only a reference for the next node, we can only traverse the list in one direction and never in reverse.</p>
+<p>In most cases, a <strong>doubly linked list</strong> is used. I.e. a list where the nodes contain the references to the next and previous node in the list.</p>
+<p>
+
+
+
+  
+  
+  <img
+    src="/doubly_linked_list_example.png"
+    alt="Doubly linked list example"
+    
+    loading="lazy"
+    width="3092"
+    height="613"
+  />
+
+
+
+
+
+
+</p>
+<h4 id="search-2">Search<a href="#search-2" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>Since linked lists have no indices, and to get to one node, you need to go through all th preceding nodes that point to it, we have to traverse the list to find what we are looking for. In the worst case, we may have to go through N-1 nodes to find what we are looking for. This gives a complexity of $O(n)$.</p>
+<h4 id="insertion-2">Insertion<a href="#insertion-2" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>In order to insert a node $D$ into a doubly linked list $A \leftrightharpoons B \leftrightharpoons C$, we need to identify the 2 nodes $A$ and $B$ between which we will insert he new node $D$. We <code>next</code> pointer in $A$ to point to $D$ and set the <code>previous</code> pointer on $D$ to point $A$. We then change the <code>previous</code> pointer in $B$ to point to $D$ and set the <code>next</code> pointer in $D$ to $B$</p>
+<p>At the end of all operations, the new list will become $A \leftrightharpoons D \leftrightharpoons B \leftrightharpoons C$.</p>
+<p>
+
+
+
+  
+  
+  <img
+    src="/inserting_into_doubly_linked_list.png"
+    alt="Inserting into a doubly linked list"
+    
+    loading="lazy"
+    width="3390"
+    height="1496"
+  />
+
+
+
+
+
+
+</p>
+<p>Setting the values for <code>previous</code> and <code>next</code> is a constant time operation, so $O(1)$ because we are setting 2 <code>previous</code> and 2 <code>next</code> pointer values, we will be perform 4 operations, i.e. $O(4)$, which according to the rules of Big-O, is considered $O(1)$. However, this is only true if we already know where we are inserting to. If we have to search for the insertion point, then we would have to do a linear search which would have a complexity of $O(n)$. Appending and prepending are a constant time operation, because we already know where the insertion point is.</p>
+<h4 id="deletion-2">Deletion<a href="#deletion-2" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>In order to delete a node, we can perform the insertion operation, but in reverse.
+So if we want to delete $B$ from the array $A \leftrightharpoons D \leftrightharpoons B \leftrightharpoons C$ , we set <code>next</code> of $D$ to <code>next</code> of $B$ which is $C$ and remove the <code>next</code> of $B$. We then set <code>previous</code> of $C$ to <code>previous</code> of $C$ and remove <code>previous</code> of $B$. This will leave us with $A \leftrightharpoons D \leftrightharpoons C$. Since the operations are practically the same as insertion, the time complexity is still $O(1)$, but just like insertion, deletion complexity is subject if we have to find the deletion point first.</p>
+<h4 id="use-case-2">Use Case<a href="#use-case-2" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>A linked list, is a very good data structure to use for a queue. A queue is a first-in-first-out data structure, where items are appended at the tail and used as well as removed at the head. In queues, the head and tail nodes are the most important which means there is little to no need to find an node in the middle of the list. The following is an implementation of a singly-linked list as queue in Golang:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#75715e">// Singly linked list implementation in form of a queue in go
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">queue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Node</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Value</span> <span style="color:#66d9ef">interface</span>{}
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Next</span>  <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Queue</span> <span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Name</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Size</span> <span style="color:#66d9ef">int</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">head</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">tail</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">Enqueue</span>(<span style="color:#a6e22e">n</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span>) {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span> = <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">tail</span> = <span style="color:#a6e22e">n</span> <span style="color:#75715e">// if head is empty, then so is tail
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">tail</span>.<span style="color:#a6e22e">Next</span> = <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">tail</span> = <span style="color:#a6e22e">n</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">Deque</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">nil</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">tail</span> = <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">dequedNode</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span> <span style="color:#75715e">// store the current head value before reassigning it
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span> = <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span>.<span style="color:#a6e22e">Next</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">Size</span> <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dequedNode</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">PeekHead</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">head</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> (<span style="color:#a6e22e">q</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">Queue</span>) <span style="color:#a6e22e">PeekTail</span>() <span style="color:#f92672">*</span><span style="color:#a6e22e">Node</span> {
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">q</span>.<span style="color:#a6e22e">tail</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span> 
+</span></span></code></pre></div><h3 id="stack">Stack<a href="#stack" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>A stack is a the opposite of a singly-linked list (queue) where the head is at the tail and vice versa. Unlike the FIFO nature of a queue, a stack is First-In-Last-Out.
+This means we are going to append to and remove from the head. In the diagram below, notice the pointers are going in the reverse direction compared to singly-linked lists
+
+
+
+
+  
+  
+  <img
+    src="/stack_example.png"
+    alt="stack example"
+    
+    loading="lazy"
+    width="3061"
+    height="1478"
+  />
+
+
+
+
+
+
+</p>
+<h4 id="search-3">Search<a href="#search-3" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>Since stacks are FILO, we only need to get the node at the beginning of it. To know what is at the top of the stack, we can use a <code>head</code> to store a pointer to the first node. This is a constant time operation</p>
+<h4 id="insert-push">Insert (push)<a href="#insert-push" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>To insert a node, all we need to do set the new node&rsquo;s <code>previous</code> pointer to the item pointed to by <code>head</code>, and then set the <code>head</code> pointer to the new node.
+
+
+
+
+  
+  
+  <img
+    src="/stack_insert_example.png"
+    alt="stack insertion example"
+    
+    loading="lazy"
+    width="4260"
+    height="1500"
+  />
+
+
+
+
+
+
+</p>
+<h4 id="deletion-pop">Deletion (pop)<a href="#deletion-pop" class="post-heading__anchor" aria-hidden="true">#</a>
+</h4>
+<p>To delete a node from a stack, we do the reverse of insertion: Take the node at the beginning of the stack and make the value it points to the new head, and remove it&rsquo;s pointer.</p>
+
+    </div>
+
+    
+
+    
+  </article>
+
+        </div>
+        <div class="sidebar">
+  
+    
+      <aside class="toc">
+        <nav>
+          <p class="sidebar__heading">Table Of Contents</p>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#static-array">Static Array</a></li>
+        <li><a href="#dynamic-array">Dynamic Array</a></li>
+        <li><a href="#linked-lists">Linked Lists</a></li>
+        <li><a href="#stack">Stack</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+      <hr />
+    
+  
+
+  
+    <aside class="tag__cloud">
+      
+
+
+
+
+
+
+
+
+
+
+<div id="tag-cloud" style="padding: 5px 15px">
+    
+    
+    
+    
+    
+    
+    <a href="/tags/algorithms"
+        style="font-size:2.188721875540867rem">algorithms</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/big-o"
+        style="font-size:1.75rem">big-o</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/django"
+        style="font-size:1.75rem">django</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/dsa"
+        style="font-size:2.188721875540867rem">dsa</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/explainer"
+        style="font-size:2.188721875540867rem">explainer</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/golang"
+        style="font-size:2.188721875540867rem">golang</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/json"
+        style="font-size:1rem">json</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/permissions"
+        style="font-size:1rem">permissions</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/python"
+        style="font-size:1.75rem">python</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/security"
+        style="font-size:1rem">security</a>
+    
+    
+    
+    
+    
+    
+    <a href="/tags/tutorial"
+        style="font-size:1.75rem">tutorial</a>
+    
+</div>
+
+    </aside>
+  
+
+</div>
+
+      </main>
+      <footer>
+  <div class="copyright">
+    
+  </div>
+</footer>
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+
+
+
+<script src="/js/main.93f2afc43f607a57e1b567f73a1509f24ce17810a62aea20bc84cd15fd5c1cb623be1fa949d7eb654a35c2bdf76089ba25637e99022969fdeac2746c0500a91a.js" integrity="sha512-k/KvxD9gelfhtWf3OhUJ8kzheBCmKuogvITNFf1cHLYjvh&#43;pSdfrZUo1wr33YIm6JWN&#43;mQIpaf3qwnRsBQCpGg=="></script>
+<script src="/js/flexsearch.2b4be539dc87af2ffcb8ef5eec75bb6b80068cd744462e449627bdbbc3cd4f1f6d4e8f21ed6f34e94d0a216d4c59bf51be0886094f1ed267bd1eb33f1da61f6c.js" integrity="sha512-K0vlOdyHry/8uO9e7HW7a4AGjNdERi5Elie9u8PNTx9tTo8h7W806U0KIW1MWb9RvgiGCU8e0me9HrM/HaYfbA=="></script>
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

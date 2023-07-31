@@ -1,0 +1,12 @@
+.post-preview {
+    max-width: 90%;
+    margin-left: 5%;
+}
+.post-preview-header {
+    font-size: 1.4rem;
+    color: var(--blue1);
+}
+.post-preview-content {
+    font-size: 0.9rem;
+    font-weight: 300;
+}

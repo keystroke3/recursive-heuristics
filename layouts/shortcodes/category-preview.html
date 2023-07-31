@@ -1,0 +1,5 @@
+{{ $category := .Get 0 }}
+{{ range $pageIndex, $page := where .Site.RegularPages "Params.category" $category | first 1 }}
+Latest {{ $category }} article:
+  {{ partial "article-preview.html" . }}
+{{ end }}

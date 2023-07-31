@@ -1,5 +1,9 @@
 {
-    "files.associations": {
-        "*.html": "html"
-    }
+  "files.associations": {
+    "*.html": "html"
+  },
+  "cSpell.words": [
+    "devlog",
+    "Devlogs"
+  ]
 }

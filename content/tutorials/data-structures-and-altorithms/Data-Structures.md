@@ -2,6 +2,7 @@
 title: "Data Structures"
 date: 2023-07-21T12:23:00+03:00
 tags: ['dsa','explainer', 'algorithms', 'golang', 'big-o']
+category: "tutorial"
 toc: true
 ---
 A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
