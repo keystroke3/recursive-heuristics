@@ -2,7 +2,7 @@
 title: "Data Structures"
 date: 2023-07-21T12:23:00+03:00
 tags: ['dsa','explainer', 'algorithms', 'golang', 'big-o']
-category: "tutorial"
+category: "explainer"
 math: true
 toc: true
 ---

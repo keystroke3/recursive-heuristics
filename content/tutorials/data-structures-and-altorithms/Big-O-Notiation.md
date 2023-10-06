@@ -2,7 +2,7 @@
 title: "Big-O Complexity Notation"
 date: 2023-07-13T15:02:25+03:00
 tags: ['dsa','explainer', 'algorithms', 'golang', 'big-o']
-category: "tutorial"
+category: "explainer"
 math: true
 toc: true
 ---

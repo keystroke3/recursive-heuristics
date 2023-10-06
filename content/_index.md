@@ -20,9 +20,16 @@ the devlog articles, because the subjects may pop up during research process for
 
 {{<  category-preview "learning" >}}
 
-## Devlogs
+## Stuff I have Built
+
+This category is a showcase of what I have built or I am still building. Some of these tools are still not complete. I make them
+in my free time and usually are made to solve a particular problem.
+
+{{<  category-preview "learning" >}}
+
+<!-- ## Devlogs
 
 Devlogs are journals of the process of developing something. The thing doesn't matter that much, but seeing as I am a developer, it will
 focus on building software of various kinds and uses. I plan to share my wins and losses, struggles and triumphs as i build the next big thing. The devlogs are mostly to keep me sane during the process and also for me to look back and see how far I have come.
 
-{{<  category-preview "devlogs" >}}
+{{<  category-preview "devlogs" >}} -->
