@@ -6,7 +6,43 @@
     <description>Recent content in Tags on Recursive Heuristics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jul 2023 16:15:35 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 03:53:40 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>config</title>
+      <link>https://blog.okello.io/tags/config/</link>
+      <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
+      
+      <guid>https://blog.okello.io/tags/config/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debugging</title>
+      <link>https://blog.okello.io/tags/debugging/</link>
+      <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
+      
+      <guid>https://blog.okello.io/tags/debugging/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://blog.okello.io/tags/golang/</link>
+      <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
+      
+      <guid>https://blog.okello.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>learning</title>
+      <link>https://blog.okello.io/tags/learning/</link>
+      <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
+      
+      <guid>https://blog.okello.io/tags/learning/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>django</title>
       <link>https://blog.okello.io/tags/django/</link>
@@ -85,15 +121,6 @@
       <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
       
       <guid>https://blog.okello.io/tags/explainer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://blog.okello.io/tags/golang/</link>
-      <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
-      
-      <guid>https://blog.okello.io/tags/golang/</guid>
       <description></description>
     </item>
     

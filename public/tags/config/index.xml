@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>config on Recursive Heuristics</title>
+    <link>https://blog.okello.io/tags/config/</link>
+    <description>Recent content in config on Recursive Heuristics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Oct 2023 03:53:40 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/config/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Today I learned How to Read Stdout in Go Tests</title>
+      <link>https://blog.okello.io/notes/how-to-read-stdout-in-go-tests/</link>
+      <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
+      
+      <guid>https://blog.okello.io/notes/how-to-read-stdout-in-go-tests/</guid>
+      <description>Being able to read the output of a function can be useful to read some good your tests are failing. Here&amp;rsquo;s how I did it.
+The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables.</description>
+    </item>
+    
+  </channel>
+</rss>

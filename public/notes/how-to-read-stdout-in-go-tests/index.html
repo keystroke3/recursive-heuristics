@@ -61,39 +61,41 @@
 
 
 
-<title>python</title>
+<title>Today I learned How to Read Stdout in Go Tests</title>
 
 <meta
   name="description"
-  content="A collection of tutorials, notes and my thoughts on various topics"
+  content="Being able to read the output of a function can be useful to read some good your tests are failing. Here&amp;rsquo;s how I did it.
+The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables."
 />
 
-<link rel="canonical" href="https://blog.okello.io/tags/python/" />
+<link rel="canonical" href="https://blog.okello.io/notes/how-to-read-stdout-in-go-tests/" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="python"/>
-<meta name="twitter:description" content="A collection of tutorials, notes and my thoughts on various topics"/>
+<meta name="twitter:title" content="Today I learned How to Read Stdout in Go Tests"/>
+<meta name="twitter:description" content="Being able to read the output of a function can be useful to read some good your tests are failing. Here&rsquo;s how I did it.
+The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables."/>
 
-<meta property="og:title" content="python" />
-<meta property="og:description" content="A collection of tutorials, notes and my thoughts on various topics" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.okello.io/tags/python/" />
+<meta property="og:title" content="Today I learned How to Read Stdout in Go Tests" />
+<meta property="og:description" content="Being able to read the output of a function can be useful to read some good your tests are failing. Here&rsquo;s how I did it.
+The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.okello.io/notes/how-to-read-stdout-in-go-tests/" /><meta property="article:section" content="notes" />
+<meta property="article:published_time" content="2023-10-15T03:53:40+03:00" />
+<meta property="article:modified_time" content="2023-10-15T03:53:40+03:00" />
 
-<meta itemprop="name" content="python">
-<meta itemprop="description" content="A collection of tutorials, notes and my thoughts on various topics">
+<meta itemprop="name" content="Today I learned How to Read Stdout in Go Tests">
+<meta itemprop="description" content="Being able to read the output of a function can be useful to read some good your tests are failing. Here&rsquo;s how I did it.
+The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables."><meta itemprop="datePublished" content="2023-10-15T03:53:40+03:00" />
+<meta itemprop="dateModified" content="2023-10-15T03:53:40+03:00" />
+<meta itemprop="wordCount" content="823">
+<meta itemprop="keywords" content="learning,golang,config,debugging," />
 
 
 
 
-
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="/tags/python/index.xml"
-    title="Recursive Heuristics"
-  />
 
 
 
@@ -315,78 +317,148 @@
       <main>
         <div class="content">
           
-  <div class="content-section">
-    <h1>python</h1>
+  <article class="post">
+    <div class="post-header">
+      <h1>Today I learned How to Read Stdout in Go Tests</h1>
+      <div class="post-meta"><span>2023-10-15</span>
+    <div class="post-tags">
+      <a class="post-tag" href="https://blog.okello.io/tags/learning">learning</a><a class="post-tag" href="https://blog.okello.io/tags/golang">golang</a><a class="post-tag" href="https://blog.okello.io/tags/config">config</a><a class="post-tag" href="https://blog.okello.io/tags/debugging">debugging</a>
+    </div>
+  
+
+  
+</div>
+
+    </div>
+
+    <div class="post-content">
+      <p>Being able to read the output of a function can be useful to read some good your tests are failing. Here&rsquo;s how I did it.</p>
+<h2 id="the-problem">The problem<a href="#the-problem" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>I am currently in the middle of building my lightweight configuration loader called <a
+  href="https://github.com/keystroke3/pluma"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>Pluma</a>. I was writing tests for one of the
+exported helper functions <code>FromEnv</code> which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing
+except the ones where the user passes a prefix for the variables.</p>
+<p>Here a cut-down version of the test file for context:</p>
+<!-- raw HTML omitted -->
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-golang" data-lang="golang"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">package</span> <span style="color:#a6e22e">pluma</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> (
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;bytes&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;fmt&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;log&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;reflect&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;strings&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;testing&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">mockConfig</span> <span style="color:#66d9ef">struct</span>{ <span style="color:#a6e22e">opts</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestFromEnv</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">prefix</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;TEST_&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">options</span> <span style="color:#f92672">:=</span> make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// construct keys and options
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">tests</span> <span style="color:#f92672">:=</span> []<span style="color:#66d9ef">struct</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">keys</span>   []<span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">prefix</span> <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expect</span> <span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">name</span>   <span style="color:#66d9ef">string</span>
+</span></span><span style="display:flex;"><span>	}{
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">keys</span>:   <span style="color:#a6e22e">keys</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">expect</span>: <span style="color:#a6e22e">options</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">name</span>:   <span style="color:#e6db74">&#34;Lowercase keys without prefix, expect full config&#34;</span>,
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">keys</span>:   <span style="color:#a6e22e">keys</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">expect</span>: <span style="color:#a6e22e">options</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">prefix</span>: <span style="color:#a6e22e">prefix</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">name</span>:   <span style="color:#e6db74">&#34;Lowercase keys with prefix, expect full config&#34;</span>,
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">test</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">tests</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">cfg</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mockConfig</span>{<span style="color:#a6e22e">opts</span>: make(<span style="color:#66d9ef">map</span>[<span style="color:#66d9ef">string</span>]<span style="color:#66d9ef">string</span>)}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">name</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">FromEnv</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">keys</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cfg</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">prefix</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">cfg</span>.<span style="color:#a6e22e">opts</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">expect</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Test Failed, expect %v, have %v&#34;</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">expect</span>, <span style="color:#a6e22e">cfg</span>.<span style="color:#a6e22e">opts</span>)
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		})
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Suppose we have a variable <code>foo</code> defined set to <code>bar</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export BUZ<span style="color:#f92672">=</span>fiz
+</span></span><span style="display:flex;"><span>export TEST_FOO<span style="color:#f92672">=</span>bar
+</span></span></code></pre></div><p>There were no errors with the first test without a prefix. <code>BUZ</code> is loaded as expected.
+If we set a prefix of <code>TEST_</code> then FOO should be set to bar in the config, but that doesn&rsquo;t happen. Instead, we get this error message.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">Test</span> <span style="color:#a6e22e">Failed</span>, <span style="color:#a6e22e">expect</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">FOO</span>:<span style="color:#a6e22e">bar</span>] <span style="color:#a6e22e">have</span> <span style="color:#66d9ef">map</span>[<span style="color:#a6e22e">FOO</span>:]
+</span></span></code></pre></div><p>Without knowing the internal state of the function, it is difficult to debug it without running it normally. This is only one test case, i.e. if the function correctly handles a prefix.
+In a normal test file, there can be dozens of test cases, it can be very impractical to have to run the function, or the entire program just so we can use the debugger. Adding log statements
+can be a bit faster to find the problem and then get rid of them when debugging is over.</p>
+<h2 id="the-solution">The solution<a href="#the-solution" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>When we run automated tests, only the error messages defined in the tests are printed when a test fails. Any standard output (stdout) messages are ignored. To solve this, we can temporally redirect
+the logs to a different place then read from there.<br>
+One option is to use a file, but seeing as we are working with (probably) unit tests, we want to keep our requirements as low as possible.
+Lucky for us, interfaces are king in Go and any writer that implements <code>io.Writer</code> will do. We will just need to find a way to read from where that writer is writing.
+The best writer for this case is the <code>bytes.Buffer</code>. Is both an <code>io.Reader</code> and <code>io.Writer</code>  so we can use it to quickly save our tests&rsquo; output and read it later.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">name</span>, <span style="color:#66d9ef">func</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bf</span> <span style="color:#a6e22e">bytes</span>.<span style="color:#a6e22e">Buffer</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetOutput</span>(<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">bf</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Cleanup</span>(<span style="color:#66d9ef">func</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">SetOutput</span>(<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Stdout</span>)
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FromEnv</span>(<span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">keys</span>, <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">cfg</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">prefix</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> !<span style="color:#a6e22e">reflect</span>.<span style="color:#a6e22e">DeepEqual</span>(<span style="color:#a6e22e">cfg</span>.<span style="color:#a6e22e">opts</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">expect</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Test Failed, expect %v, have %v&#34;</span>, <span style="color:#a6e22e">test</span>.<span style="color:#a6e22e">expect</span>, <span style="color:#a6e22e">cfg</span>.<span style="color:#a6e22e">opts</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Log</span>(<span style="color:#a6e22e">bf</span>.<span style="color:#a6e22e">String</span>())
+</span></span><span style="display:flex;"><span>})
+</span></span></code></pre></div><p>In this iteration of the code, we are creating a new buffer with <code>var bf bytes.Buffer</code> and switching the default log output from <code>os.Stdout</code> to our newly created buffer. We are then calling the function being tested, in this case, FromEnv, and checking output validity.<br>
+Just like with all resources in Go, we must remember to clean up and close them after, so why not schedule a clean-up so we don&rsquo;t forget?
+The anonymous function in <code>t.Cleanup()</code> will be run when all the tests and sub-tests have completed. It will return normal log output to <code>os.Stdout</code> allowing us to read what we stored in our buffer <code>bf</code> by calling <code>t.Log(bf.String())</code>. I don&rsquo;t know about you, but I can&rsquo;t read binary, so we convert the buffer to a string before logging it.</p>
+<p>This only works with <code>log</code> statements, not <code>fmt.Print</code> and friends. I will keep looking for a way to show the <code>fmt.Print</code> statements as well, but I think it is better to only have it in logs. We don&rsquo;t want to print debug messages to the client in a production environment. If you know a way to do it with fmt, write a comment or send me an email or dm on twitter.</p>
+<h2 id="the-bug">The bug<a href="#the-bug" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>So after making this change to the test, I added some log statements and discovered that the lookup key was actually set to <code>TEST__FOO</code> and not <code>TEST_FOO</code> as expected. Turns out I was adding an underscore after the prefix. I prefer if the user explicitly adds the underscore, so I have removed the automatic addition.
+I don&rsquo;t know how long it would have taken me to discover the bug. I am also glad I wrote the test because that bug would have gone into production and caused more problems than the Pluma is aiming to solve.</p>
+
+    </div>
+
     
-  </div>
-  
-  <article class="post">
-    <div class="post-header">
-      <h2>
-        <a href="/tutorials/recursively-convert-django-model-to-dict/">How to Recursively Convert Django Model to Dict</a>
-      </h2>
-      <div class="post-meta"><span>2023-07-25</span>
-    <div class="post-tags">
-      <a class="post-tag" href="https://blog.okello.io/tags/python">python</a><a class="post-tag" href="https://blog.okello.io/tags/django">django</a><a class="post-tag" href="https://blog.okello.io/tags/tutorial">tutorial</a><a class="post-tag" href="https://blog.okello.io/tags/json">json</a>
-    </div>
-  
 
-  
-</div>
-
-    </div>
-
-    <div class="post-content">
-      
-        In this article we will look at how to create your own recursive serializer in Django without using the Django Rest Framework Sometimes when working with Django, we may have some data that we want to serialize (convert to JSON) but we do not have the option of using the serializers that come with Django Rest Framework. The data can also take the same form for many cases and writing a new serializer for all of those cases can be tedious and repetitive.
-        
-          <div class="post-content__read-more">
-            <a href="/tutorials/recursively-convert-django-model-to-dict/">Read more &gt;</a>
-          </div>
-        
-      
-    </div>
+    
   </article>
-
-  <article class="post">
-    <div class="post-header">
-      <h2>
-        <a href="/tutorials/create-custom-permission-class-in-django/">How to Create Custom Permission Class in Django</a>
-      </h2>
-      <div class="post-meta"><span>2023-07-25</span>
-    <div class="post-tags">
-      <a class="post-tag" href="https://blog.okello.io/tags/tutorial">tutorial</a><a class="post-tag" href="https://blog.okello.io/tags/python">python</a><a class="post-tag" href="https://blog.okello.io/tags/django">django</a><a class="post-tag" href="https://blog.okello.io/tags/permissions">permissions</a><a class="post-tag" href="https://blog.okello.io/tags/security">security</a>
-    </div>
-  
-
-  
-</div>
-
-    </div>
-
-    <div class="post-content">
-      
-        Permissions can be a hustle to deal with when developing an api. Suppose we have a number of api views and endpoints where the access permissions are very similar to one another with only slight variations..
-We could create different permission classes with the slight changes that fit the specific endpoint&rsquo;s needs. That works, but that involves a lot of repetition and duplicated code that can be hard to update later down the line.
-        
-          <div class="post-content__read-more">
-            <a href="/tutorials/create-custom-permission-class-in-django/">Read more &gt;</a>
-          </div>
-        
-      
-    </div>
-  </article>
-
-
-<div class="pagination">
-  
-  
-</div>
-
-
 
         </div>
         <div class="sidebar">
+  
+    
+      <aside class="toc">
+        <nav>
+          <p class="sidebar__heading">Table Of Contents</p>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The problem</a></li>
+    <li><a href="#the-solution">The solution</a></li>
+    <li><a href="#the-bug">The bug</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+      <hr />
+    
   
 
   
@@ -497,7 +569,7 @@ We could create different permission classes with the slight changes that fit th
     
     
     
-    <a href="/tags/python" class="tag__active"
+    <a href="/tags/python"
         style="font-size:1.6460148371100896rem">python</a>
     
     
