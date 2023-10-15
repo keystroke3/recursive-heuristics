@@ -16,7 +16,7 @@ except the ones where the user passes a prefix for the variables.
 
 Here a cut-down version of the test file for context:
 <!-- markdownlint-disable MD010-->
-```golang
+```go
 
 package pluma
 
