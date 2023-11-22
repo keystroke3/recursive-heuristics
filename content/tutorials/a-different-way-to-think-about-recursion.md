@@ -44,6 +44,7 @@ A function that adheres to the first two principals is known as a *pure function
 Ok, so with those core pillars of functional programming in mind, we can tackle recursion. To answer the main question, here is my simple definition of recursion:
 
 **Recursion is when a function calls itself with different inputs until a base case is reached**.  
+
 It's not a perfect definition, but it captures everything that is needed for our purposes today. A recursive function, if written correctly, is an example of a pure function. It takes some input, iterates over it, produces some output, and does not mutate any external states. Recursive functions must also have a return value, or they will continue forever. In the case of Python, you would reach the maximum allowed recursion depth.
 
 ### Factorial Example
@@ -72,7 +73,8 @@ It was not until today, when I was tackling a classic recursion problem of tree 
 
 I thought about what was happening and came to this conclusion:
 
-**Recursion is about simplifying going forward and clarifying going backwards.**  
+**Recursion is about simplifying inputs going forward and clarifying going backwards.**  
+
 If a light bulb doesn't immediately go explode in your head, I hope it will by the end of the article.  
 Let's look at that factorial description again:
 $$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
@@ -134,11 +136,12 @@ Eventually, we get to a place with no uncertainty and also to the point at which
 
 ## Summary
 
-Here are the key takeaways:
+The key takeaway from this article is recursion is about simplifying inputs going forward and clarifying going backwards. Which briefly means:
 
 - If you want to write a good recursive function, you should aim to make it a pure and deterministic function. It should only take the inputs it requires and not make any mutations to external states.
-- If you are struggling to come up with the structure, think of the end of your recursive calls and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was `n==1` was the simplest form of `n` whose factors we know about. In the case of the directory traversal, it was `v==None`.
-- Build upon that base case to determine how you can simplify the inputs for each round and then how you can compile the outputs of each call to the current call and the one before that.
+- If you are struggling to come up with the structure, think of the final recursive call and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was `n==1` was the simplest form of `n` whose factors we know about. In the case of the directory traversal, it was `v==None`.
+- Build upon that base case to determine how you can simplify the inputs for each round.
+- Make such that the return value for each round of recursion is a absolute version of what was given to as input.
 
 ## Conclusion
 

@@ -89,7 +89,7 @@
 <meta itemprop="name" content="A Different Way to Think About Recursion">
 <meta itemprop="description" content="Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions"><meta itemprop="datePublished" content="2023-11-22T13:21:34+03:00" />
 <meta itemprop="dateModified" content="2023-11-22T13:21:34+03:00" />
-<meta itemprop="wordCount" content="1708"><meta itemprop="image" content="https://blog.okello.io/rethinking_recursion.jpg">
+<meta itemprop="wordCount" content="1725"><meta itemprop="image" content="https://blog.okello.io/rethinking_recursion.jpg">
 <meta itemprop="keywords" content="tutorial,recursion,python,dsa," />
 
 
@@ -402,8 +402,8 @@ share that with you here today.</p>
 A function that adheres to the first two principals is known as a <em>pure function</em>. Pure functions are stateless in design because they do not rely on or manipulate external states.</li>
 </ul>
 <p>Ok, so with those core pillars of functional programming in mind, we can tackle recursion. To answer the main question, here is my simple definition of recursion:</p>
-<p><strong>Recursion is when a function calls itself with different inputs until a base case is reached</strong>.  
-It&rsquo;s not a perfect definition, but it captures everything that is needed for our purposes today. A recursive function, if written correctly, is an example of a pure function. It takes some input, iterates over it, produces some output, and does not mutate any external states. Recursive functions must also have a return value, or they will continue forever. In the case of Python, you would reach the maximum allowed recursion depth.</p>
+<p><strong>Recursion is when a function calls itself with different inputs until a base case is reached</strong>.  </p>
+<p>It&rsquo;s not a perfect definition, but it captures everything that is needed for our purposes today. A recursive function, if written correctly, is an example of a pure function. It takes some input, iterates over it, produces some output, and does not mutate any external states. Recursive functions must also have a return value, or they will continue forever. In the case of Python, you would reach the maximum allowed recursion depth.</p>
 <h3 id="factorial-example">Factorial Example<a href="#factorial-example" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
 <p>A simple example of a recursive function is a factorial calculator function:</p>
@@ -421,8 +421,8 @@ $$N \times (N-1 \times (N-2 \times &hellip;. (N-(N-1))))$$</p>
 <p>When I learned about recursion, I was both confused and mesmerized by what I was looking at. Imagine being given a task, and instead of doing all of it by yourself, you spawn a clone of yourself to handle a part of it, and the clone does the same, each new clone handling smaller and smaller parts of the task. I wanted to use it everywhere but found it very tricky to implement. Clones are very slippery things to mess with.</p>
 <p>It was not until today, when I was tackling a classic recursion problem of tree traversal, that I reflected on what was actually going on. I had always had a hard time figuring out what the base case was and how to represent it in the function, together with the information I would need to pass to the function on the recursive call.</p>
 <p>I thought about what was happening and came to this conclusion:</p>
-<p><strong>Recursion is about simplifying going forward and clarifying going backwards.</strong><br>
-If a light bulb doesn&rsquo;t immediately go explode in your head, I hope it will by the end of the article.  
+<p><strong>Recursion is about simplifying inputs going forward and clarifying going backwards.</strong></p>
+<p>If a light bulb doesn&rsquo;t immediately go explode in your head, I hope it will by the end of the article.  
 Let&rsquo;s look at that factorial description again:
 $$N \times (N-1 \times (N-2 \times &hellip;. (N-(N-1))))$$</p>
 <p>Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: parenthesis. Therefore, if we were to evaluate the expression for a factorial, we would have to start from the right towards the left. Basically, start at the end and work our way back to the beginning.</p>
@@ -485,11 +485,12 @@ We know all the files that are in the current node but not below, so we call the
 <p>Eventually, we get to a place with no uncertainty and also to the point at which we cannot make the input any smaller or simpler without breaking things. At this point, we have reached the base case. From here, we begin returning values, and each value we return builds on other values that were returned from other nodes or the calling node. All the way up to the genesis node.</p>
 <h2 id="summary">Summary<a href="#summary" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
-<p>Here are the key takeaways:</p>
+<p>The key takeaway from this article is recursion is about simplifying inputs going forward and clarifying going backwards. Which briefly means:</p>
 <ul>
 <li>If you want to write a good recursive function, you should aim to make it a pure and deterministic function. It should only take the inputs it requires and not make any mutations to external states.</li>
-<li>If you are struggling to come up with the structure, think of the end of your recursive calls and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was <code>n==1</code> was the simplest form of <code>n</code> whose factors we know about. In the case of the directory traversal, it was <code>v==None</code>.</li>
-<li>Build upon that base case to determine how you can simplify the inputs for each round and then how you can compile the outputs of each call to the current call and the one before that.</li>
+<li>If you are struggling to come up with the structure, think of the final recursive call and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was <code>n==1</code> was the simplest form of <code>n</code> whose factors we know about. In the case of the directory traversal, it was <code>v==None</code>.</li>
+<li>Build upon that base case to determine how you can simplify the inputs for each round.</li>
+<li>Make such that the return value for each round of recursion is a absolute version of what was given to as input.</li>
 </ul>
 <h2 id="conclusion">Conclusion<a href="#conclusion" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
@@ -698,7 +699,7 @@ Thank you for reading. You can reach out for comments, corrections and complimen
 
 
 <script src="/js/main.93f2afc43f607a57e1b567f73a1509f24ce17810a62aea20bc84cd15fd5c1cb623be1fa949d7eb654a35c2bdf76089ba25637e99022969fdeac2746c0500a91a.js" integrity="sha512-k/KvxD9gelfhtWf3OhUJ8kzheBCmKuogvITNFf1cHLYjvh&#43;pSdfrZUo1wr33YIm6JWN&#43;mQIpaf3qwnRsBQCpGg=="></script>
-<script src="/js/flexsearch.c3cc9afb9cf4aa97c9078724d91fb17766f5ad7fdd7a63dcc5bc88e127ef31766849c2dcf91415516a8255e130f0c01f2c04d3df66bdca2dccf428e7956adf79.js" integrity="sha512-w8ya&#43;5z0qpfJB4ck2R&#43;xd2b1rX/demPcxbyI4SfvMXZoScLc&#43;RQVUWqCVeEw8MAfLATT32a9yi3M9CjnlWrfeQ=="></script>
+<script src="/js/flexsearch.800f1d02d4f02e9a525c325b62f2ee8c992b5b96eba57cfab43b47b0afc1cd631a26b36ab5dfb577f2abd80b6740810891d9e7535cf6d98f3d0ac810f3c87e99.js" integrity="sha512-gA8dAtTwLppSXDJbYvLujJkrW5brpXz6tDtHsK/BzWMaJrNqtd&#43;1d/Kr2AtnQIEIkdnnU1z22Y89CsgQ88h&#43;mQ=="></script>
 
 
 
