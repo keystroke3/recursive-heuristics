@@ -6,132 +6,112 @@
     <description>Recent content in Tags on Recursive Heuristics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Oct 2023 03:53:40 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 13:21:34 +0300</lastBuildDate>
+    <atom:link href="https://blog.okello.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dsa</title>
+      <link>https://blog.okello.io/tags/dsa/</link>
+      <pubDate>Wed, 22 Nov 2023 13:21:34 +0300</pubDate>
+      <guid>https://blog.okello.io/tags/dsa/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>python</title>
+      <link>https://blog.okello.io/tags/python/</link>
+      <pubDate>Wed, 22 Nov 2023 13:21:34 +0300</pubDate>
+      <guid>https://blog.okello.io/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>recursion</title>
+      <link>https://blog.okello.io/tags/recursion/</link>
+      <pubDate>Wed, 22 Nov 2023 13:21:34 +0300</pubDate>
+      <guid>https://blog.okello.io/tags/recursion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tutorial</title>
+      <link>https://blog.okello.io/tags/tutorial/</link>
+      <pubDate>Wed, 22 Nov 2023 13:21:34 +0300</pubDate>
+      <guid>https://blog.okello.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
     <item>
       <title>config</title>
       <link>https://blog.okello.io/tags/config/</link>
       <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/config/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>debugging</title>
       <link>https://blog.okello.io/tags/debugging/</link>
       <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/debugging/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>golang</title>
       <link>https://blog.okello.io/tags/golang/</link>
       <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/golang/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>learning</title>
       <link>https://blog.okello.io/tags/learning/</link>
       <pubDate>Sun, 15 Oct 2023 03:53:40 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/learning/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>django</title>
       <link>https://blog.okello.io/tags/django/</link>
       <pubDate>Tue, 25 Jul 2023 16:15:35 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/django/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>json</title>
       <link>https://blog.okello.io/tags/json/</link>
       <pubDate>Tue, 25 Jul 2023 16:15:35 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/json/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>python</title>
-      <link>https://blog.okello.io/tags/python/</link>
-      <pubDate>Tue, 25 Jul 2023 16:15:35 +0300</pubDate>
-      
-      <guid>https://blog.okello.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>https://blog.okello.io/tags/tutorial/</link>
-      <pubDate>Tue, 25 Jul 2023 16:15:35 +0300</pubDate>
-      
-      <guid>https://blog.okello.io/tags/tutorial/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>permissions</title>
       <link>https://blog.okello.io/tags/permissions/</link>
       <pubDate>Tue, 25 Jul 2023 15:36:25 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/permissions/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>security</title>
       <link>https://blog.okello.io/tags/security/</link>
       <pubDate>Tue, 25 Jul 2023 15:36:25 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/security/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>algorithms</title>
       <link>https://blog.okello.io/tags/algorithms/</link>
       <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/algorithms/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>dsa</title>
-      <link>https://blog.okello.io/tags/dsa/</link>
-      <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
-      
-      <guid>https://blog.okello.io/tags/dsa/</guid>
-      <description></description>
-    </item>
-    
     <item>
       <title>explainer</title>
       <link>https://blog.okello.io/tags/explainer/</link>
       <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/explainer/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>big-o</title>
       <link>https://blog.okello.io/tags/big-o/</link>
       <pubDate>Fri, 21 Jul 2023 12:23:00 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tags/big-o/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

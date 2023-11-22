@@ -6,15 +6,14 @@
     <description>Recent content in json on Recursive Heuristics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jul 2023 16:15:35 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 16:15:35 +0300</lastBuildDate>
+    <atom:link href="https://blog.okello.io/tags/json/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Recursively Convert Django Model to Dict</title>
       <link>https://blog.okello.io/tutorials/recursively-convert-django-model-to-dict/</link>
       <pubDate>Tue, 25 Jul 2023 16:15:35 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tutorials/recursively-convert-django-model-to-dict/</guid>
       <description>In this article we will look at how to create your own recursive serializer in Django without using the Django Rest Framework Sometimes when working with Django, we may have some data that we want to serialize (convert to JSON) but we do not have the option of using the serializers that come with Django Rest Framework. The data can also take the same form for many cases and writing a new serializer for all of those cases can be tedious and repetitive.</description>
     </item>
-    
   </channel>
 </rss>

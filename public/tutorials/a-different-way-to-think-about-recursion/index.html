@@ -61,40 +61,38 @@
 
 
 
-<title>Notes</title>
+<title>A Different Way to Think About Recursion</title>
 
 <meta
   name="description"
-  content="A collection of tutorials, notes and my thoughts on various topics"
+  content="Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions"
 />
 
-<link rel="canonical" href="https://blog.okello.io/notes/" />
+<link rel="canonical" href="https://blog.okello.io/tutorials/a-different-way-to-think-about-recursion/" />
 
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Notes"/>
-<meta name="twitter:description" content="A collection of tutorials, notes and my thoughts on various topics"/>
+<meta name="twitter:title" content="A Different Way to Think About Recursion"/>
+<meta name="twitter:description" content="Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions"/>
 
-<meta property="og:title" content="Notes" />
-<meta property="og:description" content="A collection of tutorials, notes and my thoughts on various topics" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://blog.okello.io/notes/" />
-
-
-<meta itemprop="name" content="Notes">
-<meta itemprop="description" content="A collection of tutorials, notes and my thoughts on various topics">
+<meta property="og:title" content="A Different Way to Think About Recursion" />
+<meta property="og:description" content="Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.okello.io/tutorials/a-different-way-to-think-about-recursion/" /><meta property="article:section" content="tutorials" />
+<meta property="article:published_time" content="2023-11-22T13:21:34+03:00" />
+<meta property="article:modified_time" content="2023-11-22T13:21:34+03:00" />
 
 
+<meta itemprop="name" content="A Different Way to Think About Recursion">
+<meta itemprop="description" content="Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions"><meta itemprop="datePublished" content="2023-11-22T13:21:34+03:00" />
+<meta itemprop="dateModified" content="2023-11-22T13:21:34+03:00" />
+<meta itemprop="wordCount" content="1708">
+<meta itemprop="keywords" content="tutorial,recursion,python,dsa," />
 
 
 
-  <link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="/notes/index.xml"
-    title="Recursive Heuristics"
-  />
+
 
 
 
@@ -311,26 +309,70 @@
 
   </button>
   
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+  
 </header>
 
       <main>
         <div class="content">
           
-  <div class="content-section">
-    <h1>Notes</h1>
-    
-  </div>
-  
   <article class="post">
     <div class="post-header">
-      <h2>
-        <a href="/notes/how-to-read-stdout-in-go-tests/">Today I learned How to Read Stdout in Go Tests</a>
-      </h2>
-      <div class="post-meta"><span>2023-10-15</span>
+      <h1>A Different Way to Think About Recursion</h1>
+      <div class="post-meta"><span>2023-11-22</span><span> by </span><span class="post-meta__author">Teddy Okello</span>
     <div class="post-tags">
-      <a class="post-tag" href="https://blog.okello.io/tags/learning">learning</a><a class="post-tag" href="https://blog.okello.io/tags/golang">golang</a><a class="post-tag" href="https://blog.okello.io/tags/config">config</a><a class="post-tag" href="https://blog.okello.io/tags/debugging">debugging</a>
+      <a class="post-tag" href="https://blog.okello.io/tags/tutorial">tutorial</a><a class="post-tag" href="https://blog.okello.io/tags/recursion">recursion</a><a class="post-tag" href="https://blog.okello.io/tags/python">python</a><a class="post-tag" href="https://blog.okello.io/tags/dsa">dsa</a>
     </div>
   
+
+  
+    
+    
+    
+
+  <figure>
+
+
+
+  
+  
+  <img
+    src="/rethinking_recursion.jpg"
+    alt="An image of Russian Dolls arranged smallest to largest from front to back with overlay text saying rethinking recursion."
+    title="source: Unsplash"
+    
+    width="790"
+    height="527"
+  />
+
+
+
+
+
+
+    <figcaption>source: <a
+  href="https://unsplash.com/photos/red-blue-and-yellow-ceramic-figurine-PB80D_B4g7c"
+  
+  
+    class="link--external" target="_blank" rel="noreferrer"
+  
+>Unsplash</a></figcaption>
+  </figure>
+
 
   
 </div>
@@ -338,28 +380,155 @@
     </div>
 
     <div class="post-content">
-      
-        Being able to read the output of a function can be useful to read some good your tests are failing. Here&rsquo;s how I did it.
-The problem# I am currently in the middle of building my lightweight configuration loader called Pluma. I was writing tests for one of the exported helper functions FromEnv which is supposed to read configurations from the environment variables and load them into a map. All the test cases were passing except the ones where the user passes a prefix for the variables.
-        
-          <div class="post-content__read-more">
-            <a href="/notes/how-to-read-stdout-in-go-tests/">Read more &gt;</a>
-          </div>
-        
-      
+      <p>$$&lsquo;&lsquo;Those\ who\ don&rsquo;t\ understand\ recursion\ are\ doomed\ to\ repeat\ it.&rsquo;&rsquo;$$</p>
+<p>If you are in a hurry, you can skip directly to the <a
+  href="#summary"
+  
+  
+>summary</a> section.</p>
+<p>Recursion is a simple but very confusing concept. When I first learned about it, I was confused as to how a function can call itself. I was working on some
+code the other day, and I had to use recursion to solve a problem, and while I was writing the function, I had a realization that changed how I look at recursion. I would like to
+share that with you here today.</p>
+<p>First, let&rsquo;s start with a brief explanation of what recursion is, in case it is new to you. If you already know what it is, you can skip to the next section.</p>
+<h2 id="what-is-recursion">What is recursion?<a href="#what-is-recursion" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>Recursion is a programming concept that arises from the Functional Programming paradigm. The world of functional programming is built on a few key principles:</p>
+<ul>
+<li>minimal to no mutation of external states. Everything that a function does must be contained within itself, with no side effects. This means a function should only rely on its inputs to generate its outputs and not manipulate any external variables or entities, including their inputs, unless absolutely necessary.</li>
+<li>Functions must be deterministic. Given the same inputs, the same outputs should be expected. This is because there are no side effects, as mentioned above.</li>
+<li>All functions must return something. Functions have inputs and produce outputs, and since there should not be any side effects, the best way to know the output of a function is to read the function&rsquo;s return values.
+A function that adheres to the first two principals is known as a <em>pure function</em>. Pure functions are stateless in design because they do not rely on or manipulate external states.</li>
+</ul>
+<p>Ok, so with those core pillars of functional programming in mind, we can tackle recursion. To answer the main question, here is my simple definition of recursion:</p>
+<p><strong>Recursion is when a function calls itself with different inputs until a base case is reached</strong>.  
+It&rsquo;s not a perfect definition, but it captures everything that is needed for our purposes today. A recursive function, if written correctly, is an example of a pure function. It takes some input, iterates over it, produces some output, and does not mutate any external states. Recursive functions must also have a return value, or they will continue forever. In the case of Python, you would reach the maximum allowed recursion depth.</p>
+<h3 id="factorial-example">Factorial Example<a href="#factorial-example" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>A simple example of a recursive function is a factorial calculator function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">factorial</span>(n:int) <span style="color:#f92672">-&gt;</span> int:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n <span style="color:#f92672">*</span> factorial(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>A factorial is a product of all integers from 1 up to a limit N, like this:
+$$N \times (N-1 \times (N-2 \times &hellip;. (N-(N-1))))$$</p>
+<!-- raw HTML omitted -->
+<p>The function does exactly this. It takes an integer <code>n</code> and multiplies it by the value returned by calling the function again with the value below  <code>n</code>. The base case in this case is when we reach <code>1</code> which is <code>n-(n-1)</code>. At this point, we know we have gone through all the values from where we started.</p>
+<h2 id="the-rethinking">The Rethinking<a href="#the-rethinking" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>When I learned about recursion, I was both confused and mesmerized by what I was looking at. Imagine being given a task, and instead of doing all of it by yourself, you spawn a clone of yourself to handle a part of it, and the clone does the same, each new clone handling smaller and smaller parts of the task. I wanted to use it everywhere but found it very tricky to implement. Clones are very slippery things to mess with.</p>
+<p>It was not until today, when I was tackling a classic recursion problem of tree traversal, that I reflected on what was actually going on. I had always had a hard time figuring out what the base case was and how to represent it in the function, together with the information I would need to pass to the function on the recursive call.</p>
+<p>I thought about what was happening and came to this conclusion:</p>
+<p><strong>Recursion is about simplifying going forward and clarifying going backwards.</strong><br>
+If a light bulb doesn&rsquo;t immediately go explode in your head, I hope it will by the end of the article.  
+Let&rsquo;s look at that factorial description again:
+$$N \times (N-1 \times (N-2 \times &hellip;. (N-(N-1))))$$</p>
+<p>Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: parenthesis. Therefore, if we were to evaluate the expression for a factorial, we would have to start from the right towards the left. Basically, start at the end and work our way back to the beginning.</p>
+<h3 id="corporate-structure-example">Corporate Structure Example<a href="#corporate-structure-example" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>Imagine that the investors of a large tech company want a status report for the whole company. The board calls a meeting of the different leaders of the company, like the CFO and CTO, and each member is tasked with generating reports for their part of the company. The CTO calls the departmental managers below him and asks for a similar report, but only for the technology side, and the senior managers go to the junior manager, and they go to the team leaders below them and ask for the same thing.  Lastly, each team member reports to their team leader about what they are working on and the status of the projects.</p>
+<p>The team members are at the bottom of the chain and have the actual information. They don&rsquo;t need to ask anyone else below them and are the &ldquo;base case&rdquo;.
+So now each team member gives a report, which the team leader compiles together with a report of their own activities and sends it up to the managers.
+The managers compile all reports from the teams they manage and add information about their office before pushing it up. This goes on until we finally get back to the board, which then compiles all this information and gives it to the investors. The investors can then decide how many private jets they should get for their spouses.</p>
+<p>
+
+
+
+  
+  
+  <img
+    src="/company-information-flow-example.png"
+    alt="cooperate structure information flow example diagram"
+    
+    loading="lazy"
+    width="1139"
+    height="2084"
+  />
+
+
+
+
+
+
+
+</p>
+<p>At each level going down, the information requested gets simpler and simpler relative to the complexity of a large company. The person requesting the information at each stage has some level of uncertainty because they may not know the details of what is happening within each node below them.
+On the way up, the person at each node is able to piece together the information returned from each node to form a clear picture of what is going on and pass it on to the person above.  </p>
+<h3 id="code-example">Code Example<a href="#code-example" class="post-heading__anchor" aria-hidden="true">#</a>
+</h3>
+<p>When we no longer have any more uncertainty about what information the function should return, we have reached the bottom of the tree, the core of the nesting, the base case.
+From here, it is about compiling the information going up. Each stage provides more and more certainty to the caller. Now the tricky part is deciding how to &lsquo;compile&rsquo; this information and what information is uncertain and needs to be clarified by a &rsquo;lesser&rsquo; function call.
+So going down the recursion stack trace, we are simplifying the input, and going up, we are providing clarification and reducing uncertainty.
+To go back to the factorial, we see that at each stage, we are unsure of what the total product of the numbers that come before is. So we simplify the input by taking away the current value of $N$ in each recursive call until we have certainty that the product of 1 and itself is 1.</p>
+<p>Let&rsquo;s take a look at a small example similar to the problem I was tackling when I came to this realization. We have a directory structure that looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Documents&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Proposal.docx&#34;</span>: <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;Report&#34;</span>: {<span style="color:#e6db74">&#34;AnnualReport.pdf&#34;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;Financials.xlsx&#34;</span>: <span style="color:#66d9ef">None</span>},
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Downloads&#34;</span>: {<span style="color:#e6db74">&#34;picture1.jpg&#34;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#34;picture2.jpg&#34;</span>: <span style="color:#66d9ef">None</span>},
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><p>We need to generate an array of all file path strings after walking them. You know you have reached the end of a file path when you encounter a key that has a value of <code>None</code>. A key is considered a directory if it has a dict as a value.
+Here is an example of how to solve the problem in Python.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">list_files</span>(current_node, current_path<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>):
+</span></span><span style="display:flex;"><span>    file_list <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> current_node<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> v <span style="color:#f92672">!=</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            file_list<span style="color:#f92672">.</span>extend(list_files(v, <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>current_path<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>k<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)) 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            file_list<span style="color:#f92672">.</span>append(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>current_path<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">{</span>k<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> file_list
+</span></span></code></pre></div><p>For each node (directory) we encounter, we do not know which files, if any, are contained in each of the nodes within. This is uncertainty.
+We know all the files that are in the current node but not below, so we call the function again for sub-node sub-node within the current node. We simplify the input and call the function again.</p>
+<p>Eventually, we get to a place with no uncertainty and also to the point at which we cannot make the input any smaller or simpler without breaking things. At this point, we have reached the base case. From here, we begin returning values, and each value we return builds on other values that were returned from other nodes or the calling node. All the way up to the genesis node.</p>
+<h2 id="summary">Summary<a href="#summary" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>Here are the key takeaways:</p>
+<ul>
+<li>If you want to write a good recursive function, you should aim to make it a pure and deterministic function. It should only take the inputs it requires and not make any mutations to external states.</li>
+<li>If you are struggling to come up with the structure, think of the end of your recursive calls and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was <code>n==1</code> was the simplest form of <code>n</code> whose factors we know about. In the case of the directory traversal, it was <code>v==None</code>.</li>
+<li>Build upon that base case to determine how you can simplify the inputs for each round and then how you can compile the outputs of each call to the current call and the one before that.</li>
+</ul>
+<h2 id="conclusion">Conclusion<a href="#conclusion" class="post-heading__anchor" aria-hidden="true">#</a>
+</h2>
+<p>I hope this article helped change how you look at recursion for the better and that you will now be able to write recursive factions with confidence and make fewer mistakes.<br>
+Thank you for reading. You can reach out for comments, corrections and compliments via email, or on twitter.</p>
+
     </div>
+
+    
+
+    
   </article>
-
-
-<div class="pagination">
-  
-  
-</div>
-
-
 
         </div>
         <div class="sidebar">
+  
+    
+      <aside class="toc">
+        <nav>
+          <p class="sidebar__heading">Table Of Contents</p>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-recursion">What is recursion?</a>
+      <ul>
+        <li><a href="#factorial-example">Factorial Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-rethinking">The Rethinking</a>
+      <ul>
+        <li><a href="#corporate-structure-example">Corporate Structure Example</a></li>
+        <li><a href="#code-example">Code Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+        </nav>
+      </aside>
+      <hr />
+    
   
 
   

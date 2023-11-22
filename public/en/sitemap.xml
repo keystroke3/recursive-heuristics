@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.okello.io/</loc>
-    <lastmod>2023-10-15T03:53:40+03:00</lastmod>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="de"
@@ -14,6 +14,37 @@
                 hreflang="en-us"
                 href="https://blog.okello.io/"
                 />
+  </url><url>
+    <loc>https://blog.okello.io/tutorials/a-different-way-to-think-about-recursion/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.okello.io/tags/dsa/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.okello.io/tags/python/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.okello.io/tags/recursion/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.okello.io/tags/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="https://blog.okello.io/de/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-us"
+                href="https://blog.okello.io/tags/"
+                />
+  </url><url>
+    <loc>https://blog.okello.io/tags/tutorial/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
+  </url><url>
+    <loc>https://blog.okello.io/tutorials/</loc>
+    <lastmod>2023-11-22T13:21:34+03:00</lastmod>
   </url><url>
     <loc>https://blog.okello.io/tags/config/</loc>
     <lastmod>2023-10-15T03:53:40+03:00</lastmod>
@@ -30,19 +61,6 @@
     <loc>https://blog.okello.io/notes/</loc>
     <lastmod>2023-10-15T03:53:40+03:00</lastmod>
   </url><url>
-    <loc>https://blog.okello.io/tags/</loc>
-    <lastmod>2023-10-15T03:53:40+03:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="https://blog.okello.io/de/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-us"
-                href="https://blog.okello.io/tags/"
-                />
-  </url><url>
     <loc>https://blog.okello.io/notes/how-to-read-stdout-in-go-tests/</loc>
     <lastmod>2023-10-15T03:53:40+03:00</lastmod>
   </url><url>
@@ -53,15 +71,6 @@
     <lastmod>2023-07-25T16:15:35+03:00</lastmod>
   </url><url>
     <loc>https://blog.okello.io/tags/json/</loc>
-    <lastmod>2023-07-25T16:15:35+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.okello.io/tags/python/</loc>
-    <lastmod>2023-07-25T16:15:35+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.okello.io/tags/tutorial/</loc>
-    <lastmod>2023-07-25T16:15:35+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.okello.io/tutorials/</loc>
     <lastmod>2023-07-25T16:15:35+03:00</lastmod>
   </url><url>
     <loc>https://blog.okello.io/tutorials/create-custom-permission-class-in-django/</loc>
@@ -77,9 +86,6 @@
     <lastmod>2023-07-21T12:50:21+03:00</lastmod>
   </url><url>
     <loc>https://blog.okello.io/tutorials/data-structures-and-altorithms/algorithms/</loc>
-    <lastmod>2023-07-21T12:50:21+03:00</lastmod>
-  </url><url>
-    <loc>https://blog.okello.io/tags/dsa/</loc>
     <lastmod>2023-07-21T12:50:21+03:00</lastmod>
   </url><url>
     <loc>https://blog.okello.io/tags/explainer/</loc>

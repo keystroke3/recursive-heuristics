@@ -6,16 +6,15 @@
     <description>Recent content in security on Recursive Heuristics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Jul 2023 15:36:25 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 25 Jul 2023 15:36:25 +0300</lastBuildDate>
+    <atom:link href="https://blog.okello.io/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Create Custom Permission Class in Django</title>
       <link>https://blog.okello.io/tutorials/create-custom-permission-class-in-django/</link>
       <pubDate>Tue, 25 Jul 2023 15:36:25 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tutorials/create-custom-permission-class-in-django/</guid>
       <description>Permissions can be a hustle to deal with when developing an api. Suppose we have a number of api views and endpoints where the access permissions are very similar to one another with only slight variations..
 We could create different permission classes with the slight changes that fit the specific endpoint&amp;rsquo;s needs. That works, but that involves a lot of repetition and duplicated code that can be hard to update later down the line.</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>recursion on Recursive Heuristics</title>
+    <link>https://blog.okello.io/tags/recursion/</link>
+    <description>Recent content in recursion on Recursive Heuristics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Nov 2023 13:21:34 +0300</lastBuildDate>
+    <atom:link href="https://blog.okello.io/tags/recursion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Different Way to Think About Recursion</title>
+      <link>https://blog.okello.io/tutorials/a-different-way-to-think-about-recursion/</link>
+      <pubDate>Wed, 22 Nov 2023 13:21:34 +0300</pubDate>
+      <guid>https://blog.okello.io/tutorials/a-different-way-to-think-about-recursion/</guid>
+      <description>$$&amp;lsquo;&amp;lsquo;Those\ who\ don&amp;rsquo;t\ understand\ recursion\ are\ doomed\ to\ repeat\ it.&amp;rsquo;&amp;rsquo;$$
+If you are in a hurry, you can skip directly to the summary section.
+Recursion is a simple but very confusing concept. When I first learned about it, I was confused as to how a function can call itself. I was working on some code the other day, and I had to use recursion to solve a problem, and while I was writing the function, I had a realization that changed how I look at recursion.</description>
+    </item>
+  </channel>
+</rss>

@@ -6,37 +6,32 @@
     <description>Recent content in algorithms on Recursive Heuristics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Jul 2023 12:50:21 +0300</lastBuildDate><atom:link href="https://blog.okello.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jul 2023 12:50:21 +0300</lastBuildDate>
+    <atom:link href="https://blog.okello.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithms</title>
       <link>https://blog.okello.io/tutorials/data-structures-and-altorithms/algorithms/</link>
       <pubDate>Fri, 21 Jul 2023 12:50:21 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tutorials/data-structures-and-altorithms/algorithms/</guid>
       <description>SEARCH ALGORITHMS# Linear Search# Linear search goes over all elements and checks if it is the target element.
 Since the search has to go through all elements in the worst case where there the values is not there, it has a complexity of $O(n)$.
 // golang package search func Linear(items []int, target int) bool { for _, n := range items { if n == target { return true } } return false } Binary Search# Binary search is used to find items in an ordered list by iteratively halving the input.</description>
     </item>
-    
     <item>
       <title>Data Structures</title>
       <link>https://blog.okello.io/tutorials/data-structures-and-altorithms/data-structures/</link>
       <pubDate>Fri, 21 Jul 2023 12:23:00 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tutorials/data-structures-and-altorithms/data-structures/</guid>
       <description>A data structure is a way of representing data in a program, and storing it in memory. There are many structures with their pros and cons, and uses cases. In these notes, we are going to go through some of them and look at how they function and when to use them.
 Static Array# Arrays are a contiguous (non-breaking) space in memory with an index for each byte of memory.</description>
     </item>
-    
     <item>
       <title>Big-O Complexity Notation</title>
       <link>https://blog.okello.io/tutorials/data-structures-and-altorithms/big-o-notiation/</link>
       <pubDate>Thu, 13 Jul 2023 15:02:25 +0300</pubDate>
-      
       <guid>https://blog.okello.io/tutorials/data-structures-and-altorithms/big-o-notiation/</guid>
       <description>Big O complexity notation is used to give a general idea of the performance of an algorithm in terms of resources such as time or memory as the input grows larger. It is not a measure of true performance and is only a guide. The differences between the various algorithms are only seen on really large inputs.
 The notation uses the syntax $O(v)$ where $v$ is an expression of complexity. d</description>
     </item>
-    
   </channel>
 </rss>
