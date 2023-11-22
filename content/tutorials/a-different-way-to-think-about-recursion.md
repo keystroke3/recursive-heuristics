@@ -9,6 +9,8 @@ tags:
   - 'dsa'
 category: "tutorial"
 
+images: ['rethinking_recursion.jpg']
+
 cover:
   src: "/rethinking_recursion.jpg"
   alt: "An image of Russian Dolls arranged smallest to largest from front to back with overlay text saying rethinking recursion."
@@ -16,6 +18,7 @@ cover:
 
 toc: true
 math: true
+draft: false
 author: "Teddy Okello"
 ---
 
