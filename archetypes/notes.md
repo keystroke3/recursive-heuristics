@@ -5,6 +5,7 @@ tags: ['learning']
 category: "learning"
 toc: true
 draft: true
+math: false
 ---
 
 

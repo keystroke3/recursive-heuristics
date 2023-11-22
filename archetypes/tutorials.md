@@ -1,9 +1,10 @@
 ---
 title: "How to {{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-tags: ['tutorials']
-category: "tutorials"
+tags: ['tutorial']
+category: "tutorial"
 toc: true
 draft: true
+math: false
 ---
 
