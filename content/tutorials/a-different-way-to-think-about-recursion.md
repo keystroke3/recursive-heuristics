@@ -7,16 +7,13 @@ toc: true
 draft: true
 ---
 
-Example:
-[Example question](https://www.boot.dev/assignments/5dfdf265-e5df-4f16-a6bf-6aca05ebb9a7)
-
-> Those who don't understand recursion are doomed to repeat it.
+$$''Those\ who\ don't\ understand\ recursion\ are\ doomed\ to\ repeat\ it.''$$
 
 Recursion is a simple but very confusing concept. When I first learned about it, I sure was confused as to how a function can call itself. I was working on some
 code the other day and I had to use recursion to solve a problem, and while I was writing the function, I had a realization that changed how I look at recursion. I would like to
 share that with you here today.
 
-First, let's start by a small explanation of what recursion is incase this is new to you. If you already know what it is, you can skip to the next section.
+First, let's start by a brief explanation of what recursion is incase this is new to you. If you already know what it is, you can skip to the next section.
 
 ## What is recursion?
 
@@ -30,9 +27,9 @@ A function that adheres to the the first 2 principals is known as a *pure functi
 Ok so with those core pillars of functional programming in mind, we can tackle recursion. To answer the main question, here is my simple definition of recursion:
 
 **Recursion is when a function calls itself in its with different inputs until a base case is reached**.  
-It's not a perfect definition, but it captures everything that is needed to understand this article. A recursive function, if written correctly, is an example of a pure function. It takes some input and iterates over it and produces some output and does not mutate any external states. Recursive functions must also have a return value otherwise the loop will never end, or in the case of Python, you would reach the maximum allowed recursion depth.
+It's not a perfect definition, but it captures everything that is needed for our purposes today. A recursive function, if written correctly, is an example of a pure function. It takes some input and iterates over it and produces some output and does not mutate any external states. Recursive functions must also have a return value otherwise the loop will never end, or in the case of Python, you would reach the maximum allowed recursion depth.
 
-### Example
+### Factorial Example
 
 A simple example of a recursive function is a factorial calculator function:
 
@@ -44,92 +41,61 @@ def factorial(n:int) -> int:
 ```
 
 <!-- markdownlint-disable MD037 -->
-A factorial is a product of all integers from 1 up to a limit N, `N * (N-1 * (N-2 * .... (N-(N-1))))`.
+A factorial is a product of all integers from 1 up to a limit N like so:
+$$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
 <!-- markdownlint-enable MD037 -->
 
 The function does exactly this. It takes an integer `n` and multiplies it by the the return value of calling factorial with the number just below `n`. The base case in this case, is when we reach `1` which is `n-(n-1)`. At this point we know we have gone through all the values from where we started.
 
 ## The Rethinking
 
-When I was learning recursion, thought that all recursive functions must have the same stature as the factorial function shown above. I.e., a simple base case with an `if` statement, and recursive call being at the end with a `return` statement attached to it. This worked for me most part, with simple easy to understand logic, but it quickly falls apart when applied to anything more complex.
-Recursion is most powerful with Nested and tree like data structures, so something had to change with this thiking
+When I learned recursion, I was both confused and mesmerized by what I was looking at. Imagine being given a task and instead of doing all of it by yourself, you spawn a clone of yourself to handle a part of it, and the clone does the same, each new clone handling smaller and smaller parts of the task. I wanted to use it everywhere but found it very tricky to implement. Clones are very slippery things to things to mess with.
 
-I was tasked with traversing a tree-like data structure and getting all paths to all the leaves. This is akin to traversing the file structure of inside a folder and getting all the paths to the files at the end of each directory. Here is an example of such a file structure in the form of a Python dictionary:
+It was not until today, when I was tackling a classic recursion problem of tree traversal, that I reflected on what was actually going on. I had always had a hard time figuring out what the base case was and how to represent it in the function, and also what information I would need to pass to the function on the recursive call.
+
+I thought about what was happening and came to this conclusion:
+
+**Recursion is about simplifying going forward and clarifying going backwards**  
+If a light bulb doesn't immediately go explode in your head, I hope it will by the end of the article.  
+Let's look at that factorial description again:
+$$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
+
+Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: Parenthesis. Therefor, if we were to evaluate the expression for a factorial, we would have to start from the right going on the left. Basically start at the end and work our way back to the beginning.
+
+### Corporate Structure Example
+
+Imagine the investors of a large tech company want a status report of the whole company. The board calls a meeting of the different leaders of the company like the CFO and CTO and each member is tasked with generating reports for their part of the company. The CTO calls the departmental managers below him and asks for a similar report but only for the technology side, and the senior managers go the junior manager and they to the team leaders below them and ask for the same thing. Lastly each team member reports about what they are working on and the status of the projects from their team leader.  
+The team members are at the bottom of the chain and have the actual information. They don't need to ask anyone else below them and are the "base case".
+So now each team member gives a report which the team leader compiles together with a report of their own activities and sends it up to the managers.
+The managers compile all reports from the teams they manage and add information about their office and push it up. This goes on until we finally get back to the board which then compiles all this information and gives it to the investors. The investors can then decide how private jets they should get for their spouses.
+
+![cooperate structure information flow example diagram](../../static/company-information-flow-example.png)
+
+At each level going down, the information requested gets simpler and simpler relative to the complexity of the machine that is a large company. The person requesting the information at each stage has some level of uncertainty because they may not know the details of what is happening within each node below them.
+On the way up, the person at each node is able to piece together information returned from each node blow them to form a clear picture of what is going on and pass it on to the person above.  
+
+### Code Example
+
+When we no longer have any more uncertainty about what information the function should return, we have reached the bottom of the tree, then core of the nesting, the base case.
+From here, it is about compiling the information going up. Each stage providing more and more certainty to the caller. Now the tricky part is deciding how to 'compile' this information, and what information is uncertain and needs to be clarified by 'lesser' function call.
+So going down the recursion stack trace, we are simplifying the input, and going up, we are providing clarification and reducing uncertainty.
+To go back to the factorial, we see that at each stage, we are unsure of what the total product of the numbers that come before are. So we simplify the input by taking away the current value of $N$ in each recursive call until we have certainty that the product of 1 and itself is 1.
+
+Let's take a look at a small example similar to the problem I was tackling when I cam to this realisation. We have a directory structure that looks like this:
 
 ```python
-# Input
 {
     "Documents": {
         "Proposal.docx": None,
         "Report": {"AnnualReport.pdf": None, "Financials.xlsx": None},
     },
     "Downloads": {"picture1.jpg": None, "picture2.jpg": None},
-}
-# Expected Output:
-[
-    "/Documents/Proposal.docx",
-    "/Documents/Report/AnnualReport.pdf",
-    "/Documents/Report/Financials.xlsx",
-    "/Downloads/picture1.jpg",
-    "/Downloads/picture2.jpg",
-]
-```
-
-The nodes in this case are keys that have other dicts as their values, and the leaves were those that have `None` as their values.
-
-### First realization
-
-**The recursive call does not have to be at the end or involve a return statement.**
-
-Here is the one of many attempt at solving the problem described above:
-
-```python
-def list_files(current_node, current_path="", paths=[]):
-    for k,v in current_node.items():
-        new_path = f"{current_path}/{k}"
-        if v == None:
-            paths.append(new_path)
-            return paths
-        return list_files(v, new_path, paths)
+} 
 
 ```
 
-A problem with this approach is the is an early `return` when checking the base case of whether we have reached the end of a branch. This results in only the first branch path being returned. So we replace it with `continue`.
-
-This change resulted in `None` being returned because of course, the function itself is not returning anything. When each iteration of the for loop reaches the end of a branch, it will exit and the return statement will not be reached.
-
-It is at this point that I realized, we are supposed to return `paths`, not the results of `list_files()` and it became clear that you don't have to have the recursive call at the end with with a `return`:
-
-```python
-def list_files(current_node, current_path="", paths = []):
-    for k,v in current_node.items(): 
-        new_path = f"{current_path}/{k}"
-        if v == None:
-            paths.append(new_path)
-            continue # replace `return paths`
-        else:
-            return list_files(v, new_path, paths)
-    return paths
-```
-
-Finally it worked and I was able to get the expected results, but of course, it had another problem. Pause here to see if you can spot it. *Hint: Look back at the pillars of functional programming*
-
-### Second Realization
-
-**Recursion is about simplifying going forward and clarifying going backwards**  
-Let's look at that factorial description again:
-$$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
-
-Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: Parenthesis. Therefor, if we were to evaluate the expression for a factorial, we would have to start from the right going on the left. Basically start at the end and work our way back to the beginning.
-
-Here is an example analogy. Imagine the CEO of a large tech company wants a status report of the whole company for her to report to the investors. The CEO calls a meeting with the other executives of the different arms of the company, lets say the CFO and CTO, and asks for the reports. The CTO calls the departmental managers below him and asks for a similar report, and the managers go the leaders of each team and ask for the same thing. Lastly each team member reports to what they are working on and the status of the projects from their team leader.  
-The team members are at the bottom of the chain with the actual information. They don't need to ask anyone else below them and are the "base case". So now each team member gives a report which the team leader compiles together with a report of their own activities and sends it up to the managers. The managers compile all reports from the teams they manage and add information about their office and push it up. This goes on until we finally get back to the CEO who then compiles all this information and gives it to the investors. The investors can then decide how private jets they should get for their spouses.
-
-When we no longer have any more uncertainty about what information the function should return, we have reached the bottom of the tree, then core of the nesting, the base case.
-From here, it is about compiling the information going up. Each stage providing more and more certainty to the caller. Now the tricky part is deciding how to 'compile' this information, and what information is uncertain and needs to be clarified by 'lesser' function call.
-So going down the recursion stack trace, we are simplifying the input and instructions, and going up, we are providing clarification on uncertainty.
-
-To go back to the factorial, we see that at each stage, we are unsure of what the total product of the numbers that come before are. So we simplify the input by taking away the current value of $N$ until we have certainty that the product of 1 and itself is 1.
+We need to generate an array of all file path strings after walking them. You know you have reached the end of a file path when you encounter a key that has a value of `None`. A key is considered a directory if it has a dict as a value.
+Here is an example of how to solve the problem in python
 
 ```python
 def list_files(current_node, current_path=""):
@@ -143,5 +109,15 @@ def list_files(current_node, current_path=""):
 
 ```
 
-The
+For each node (directory) we encounter, we do not know which files, if any are contained in each of the nodes within. This is uncertainty.
+We know all the files that are in the current node, but not below, so we call the function again, for sub-node sub-node within the current node. We simplify the input and call the function again.
 
+Eventually, we get to a place with no uncertainty and also the point at which we cannot make the input any smaller or simpler without breaking things. At this point we have reached the Base case. From here, we begin returning values, and each value we return, builds on other values that were returned from other nodes or the calling node. All the way up to the genesis node.
+
+## Summary
+
+Here are the key takeaways:
+
+- If you want to write a good recursive function you should aim to make it a pure and deterministic function. It should not mutate any states and should keep things clean.
+- If you are struggling to come up with the structure, think of the end of your recursive calls and imagine the simplest form of the input that has absolute certainty, and make that your base case. In the case of the factorial, it was `n==1`, and the directory traversal, it was `v==None`.
+- Build upon that base case, to determine how you can simplify the inputs for each round, and then how you can compile then outputs of each call to the current call and the one before that.
