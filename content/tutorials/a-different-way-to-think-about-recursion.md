@@ -141,7 +141,7 @@ The key takeaway from this article is recursion is about simplifying inputs goin
 - If you want to write a good recursive function, you should aim to make it a pure and deterministic function. It should only take the inputs it requires and not make any mutations to external states.
 - If you are struggling to come up with the structure, think of the final recursive call and imagine the simplest form of the input that has absolute certainty. Make that your base case. In the case of the factorial, it was `n==1` was the simplest form of `n` whose factors we know about. In the case of the directory traversal, it was `v==None`.
 - Build upon that base case to determine how you can simplify the inputs for each round.
-- Make such that the return value for each round of recursion is a absolute version of what was given to as input.
+- Make it such that the return value for each round of recursion is a absolute version of what was given to as input.
 
 ## Conclusion
 
