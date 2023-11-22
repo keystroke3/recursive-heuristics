@@ -25,7 +25,7 @@ the devlog articles, because the subjects may pop up during research process for
 This category is a showcase of what I have built or I am still building. Some of these tools are still not complete. I make them
 in my free time and usually are made to solve a particular problem.
 
-{{<  category-preview "learning" >}}
+{{<  category-preview "projects" >}}
 
 <!-- ## Devlogs
 

@@ -1,12 +1,22 @@
 ---
 title: "A Different Way to Think About Recursion"
 date: 2023-11-22T13:21:34+03:00
-description: "Recursions can be hard to understand. In this article I am proposing a different way of thinking to make it easier to construct and work with recursive functions"
-tags: ['tutorials', 'recursion', 'python', 'dsa']
-category: "tutorials"
-image: rethinking-recursion.jpg
+description: "Recursions can be hard to understand. In this article, I am proposing a different way of thinking to make it easier to construct and work with recursive functions"
+tags:
+  - 'tutorial'
+  - 'recursion'
+  - 'python'
+  - 'dsa'
+category: "tutorial"
+
+cover:
+  src: "/rethinking_recursion.jpg"
+  alt: "An image of Russian Dolls arranged smallest to largest from front to back with overlay text saying rethinking recursion."
+  caption: "source: [Unsplash](https://unsplash.com/photos/red-blue-and-yellow-ceramic-figurine-PB80D_B4g7c)"
+
 toc: true
-draft: true
+math: true
+author: "Teddy Okello"
 ---
 
 $$''Those\ who\ don't\ understand\ recursion\ are\ doomed\ to\ repeat\ it.''$$
@@ -68,12 +78,13 @@ Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the o
 
 ### Corporate Structure Example
 
-Imagine that the investors of a large tech company want a status report for the whole company. The board calls a meeting of the different leaders of the company, like the CFO and CTO, and each member is tasked with generating reports for their part of the company. The CTO calls the departmental managers below him and asks for a similar report, but only for the technology side, and the senior managers go to the junior manager, and they go to the team leaders below them and ask for the same thing. Lastly, each team member reports to their team leader about what they are working on and the status of the projects.
+Imagine that the investors of a large tech company want a status report for the whole company. The board calls a meeting of the different leaders of the company, like the CFO and CTO, and each member is tasked with generating reports for their part of the company. The CTO calls the departmental managers below him and asks for a similar report, but only for the technology side, and the senior managers go to the junior manager, and they go to the team leaders below them and ask for the same thing.  Lastly, each team member reports to their team leader about what they are working on and the status of the projects.
+
 The team members are at the bottom of the chain and have the actual information. They don't need to ask anyone else below them and are the "base case".
 So now each team member gives a report, which the team leader compiles together with a report of their own activities and sends it up to the managers.
 The managers compile all reports from the teams they manage and add information about their office before pushing it up. This goes on until we finally get back to the board, which then compiles all this information and gives it to the investors. The investors can then decide how many private jets they should get for their spouses.
 
-![cooperate structure information flow example diagram](company-information-flow-example.png)
+![cooperate structure information flow example diagram](/company-information-flow-example.png)
 
 At each level going down, the information requested gets simpler and simpler relative to the complexity of a large company. The person requesting the information at each stage has some level of uncertainty because they may not know the details of what is happening within each node below them.
 On the way up, the person at each node is able to piece together the information returned from each node to form a clear picture of what is going on and pass it on to the person above.  
@@ -128,4 +139,5 @@ Here are the key takeaways:
 
 ## Conclusion
 
-I hope this article helped change how you look at recursion for the better and that you will now be able to write recursive factions with confidence and make fewer mistakes. Thank you for reading. Reach out for comments, corrections and compliments via email, or on twitter.
+I hope this article helped change how you look at recursion for the better and that you will now be able to write recursive factions with confidence and make fewer mistakes.  
+Thank you for reading. You can reach out for comments, corrections and compliments via email, or on twitter.
