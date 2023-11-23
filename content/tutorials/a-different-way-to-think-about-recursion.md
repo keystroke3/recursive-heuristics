@@ -22,7 +22,7 @@ draft: false
 author: "Teddy Okello"
 ---
 
-$$''Those\ who\ don't\ understand\ recursion\ are\ doomed\ to\ repeat\ it.''$$
+> In order to understand recursion you must first understand recursion
 
 If you are in a hurry, you can skip directly to the [summary](#summary) section.  
 
@@ -60,7 +60,7 @@ def factorial(n:int) -> int:
 
 <!-- markdownlint-disable MD037 -->
 A factorial is a product of all integers from 1 up to a limit N, like this:
-$$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
+$$n \times (n-1 \times (n-2 \times ..\ (n-(n-1))))$$
 <!-- markdownlint-enable MD037 -->
 
 The function does exactly this. It takes an integer `n` and multiplies it by the value returned by calling the function again with the value below  `n`. The base case in this case is when we reach `1` which is `n-(n-1)`. At this point, we know we have gone through all the values from where we started.
@@ -136,6 +136,7 @@ Eventually, we get to a place with no uncertainty and also to the point at which
 
 ## Summary
 
+If you are no longer in such a hurry, jump back to the [top](#)  
 The key takeaway from this article is recursion is about simplifying inputs going forward and clarifying going backwards. Which briefly means:
 
 - If you want to write a good recursive function, you should aim to make it a pure and deterministic function. It should only take the inputs it requires and not make any mutations to external states.
