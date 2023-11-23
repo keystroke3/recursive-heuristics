@@ -431,10 +431,10 @@ A function that adheres to the first two principals is known as a <em>pure funct
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> n <span style="color:#f92672">*</span> factorial(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><!-- raw HTML omitted -->
-<p>A factorial is a product of all integers from 1 up to a limit N, like this:
-$$n \times (n-1 \times (n-2 \times ..\ (n-(n-1))))$$</p>
+<p>A factorial is a product of all integers from 1 up to a limit $n$, like this:
+$$n \times (n-1) \times (n-2) \times ..\times (n-(n-1))$$</p>
 <!-- raw HTML omitted -->
-<p>The function does exactly this. It takes an integer <code>n</code> and multiplies it by the value returned by calling the function again with the value below  <code>n</code>. The base case in this case is when we reach <code>1</code> which is <code>n-(n-1)</code>. At this point, we know we have gone through all the values from where we started.</p>
+<p>The function does exactly this. It takes an integer $n$ and multiplies it by the value returned by calling the function again with the value below  $n$. The base case in this case is when we reach $1$ which is $n-(n-1)$. At this point, we know we have gone through all the values from where we started.</p>
 <h2 id="the-rethinking">The Rethinking<a href="#the-rethinking" class="post-heading__anchor" aria-hidden="true">#</a>
 </h2>
 <p>When I learned about recursion, I was both confused and mesmerized by what I was looking at. Imagine being given a task, and instead of doing all of it by yourself, you spawn a clone of yourself to handle a part of it, and the clone does the same, each new clone handling smaller and smaller parts of the task. I wanted to use it everywhere but found it very tricky to implement. Clones are very slippery things to mess with.</p>
@@ -443,7 +443,7 @@ $$n \times (n-1 \times (n-2 \times ..\ (n-(n-1))))$$</p>
 <p><strong>Recursion is about simplifying inputs going forward and clarifying going backwards.</strong></p>
 <p>If a light bulb doesn&rsquo;t immediately go explode in your head, I hope it will by the end of the article.  
 Let&rsquo;s look at that factorial description again:
-$$N \times (N-1 \times (N-2 \times &hellip;. (N-(N-1))))$$</p>
+$$n \times (n-1) \times (n-2) \times ..\times (n-(n-1))$$</p>
 <p>Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: parenthesis. Therefore, if we were to evaluate the expression for a factorial, we would have to start from the right towards the left. Basically, start at the end and work our way back to the beginning.</p>
 <h3 id="corporate-structure-example">Corporate Structure Example<a href="#corporate-structure-example" class="post-heading__anchor" aria-hidden="true">#</a>
 </h3>
@@ -723,7 +723,7 @@ Thank you for reading. You can reach out for comments, corrections and complimen
 
 
 <script src="/js/main.93f2afc43f607a57e1b567f73a1509f24ce17810a62aea20bc84cd15fd5c1cb623be1fa949d7eb654a35c2bdf76089ba25637e99022969fdeac2746c0500a91a.js" integrity="sha512-k/KvxD9gelfhtWf3OhUJ8kzheBCmKuogvITNFf1cHLYjvh&#43;pSdfrZUo1wr33YIm6JWN&#43;mQIpaf3qwnRsBQCpGg=="></script>
-<script src="/js/flexsearch.d8f410c81e4f2c3c795ee32b2916fe93a963c67997ce45e70a347553c55143c741c1fd6bc347bad0c0f2fcddaf446f3cee345b0b0b92994dcf845bc0ac7a64c1.js" integrity="sha512-2PQQyB5PLDx5XuMrKRb&#43;k6ljxnmXzkXnCjR1U8VRQ8dBwf1rw0e60MDy/N2vRG887jRbCwuSmU3PhFvArHpkwQ=="></script>
+<script src="/js/flexsearch.22a73f165ab69abce8cfabbbfe2da6fe64ae930e707df9bf49e74429c8a3aa261243a3a7f1f97b7ad9e66a3c8e747684d58038412d9994ec4fe8cd2d64e4ee24.js" integrity="sha512-Iqc/Flq2mrzoz6u7/i2m/mSukw5wffm/SedEKcijqiYSQ6On8fl7etnmajyOdHaE1YA4QS2ZlOxP6M0tZOTuJA=="></script>
 
 
 

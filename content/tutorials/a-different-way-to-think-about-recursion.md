@@ -59,11 +59,11 @@ def factorial(n:int) -> int:
 ```
 
 <!-- markdownlint-disable MD037 -->
-A factorial is a product of all integers from 1 up to a limit N, like this:
-$$n \times (n-1 \times (n-2 \times ..\ (n-(n-1))))$$
+A factorial is a product of all integers from 1 up to a limit $n$, like this:
+$$n \times (n-1) \times (n-2) \times ..\times (n-(n-1))$$
 <!-- markdownlint-enable MD037 -->
 
-The function does exactly this. It takes an integer `n` and multiplies it by the value returned by calling the function again with the value below  `n`. The base case in this case is when we reach `1` which is `n-(n-1)`. At this point, we know we have gone through all the values from where we started.
+The function does exactly this. It takes an integer $n$ and multiplies it by the value returned by calling the function again with the value below  $n$. The base case in this case is when we reach $1$ which is $n-(n-1)$. At this point, we know we have gone through all the values from where we started.
 
 ## The Rethinking
 
@@ -77,7 +77,7 @@ I thought about what was happening and came to this conclusion:
 
 If a light bulb doesn't immediately go explode in your head, I hope it will by the end of the article.  
 Let's look at that factorial description again:
-$$N \times (N-1 \times (N-2 \times .... (N-(N-1))))$$
+$$n \times (n-1) \times (n-2) \times ..\times (n-(n-1))$$
 
 Whether you use $PEMDAS$ or $BODMAS$, the same thing always comes first in the order of operations: parenthesis. Therefore, if we were to evaluate the expression for a factorial, we would have to start from the right towards the left. Basically, start at the end and work our way back to the beginning.
 
